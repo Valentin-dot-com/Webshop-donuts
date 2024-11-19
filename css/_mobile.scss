@@ -1,0 +1,63 @@
+
+
+// ---------------------------------------
+// -------------- Header -----------------
+// ---------------------------------------
+
+.nav_section {
+    width: 100vw;
+    min-height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    background-color: #1e1f26;
+    align-items: center;
+    padding: 1rem;
+    h1 {
+        color: white; //ändra färger osv
+    }
+    button {
+        height: 6vh;
+        aspect-ratio: 1 / 1;
+        background: transparent;
+        border: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    button .material-symbols-outlined {
+        margin: 0;
+        background: none;
+        height: 100%;
+        font-size: clamp(2rem, 6vh, 8rem);
+        color: white;
+    }
+    button span {
+        background-color: white;
+        width: 100%;
+        height: 0.5vh;
+        border-radius: 2rem;
+    }
+    button + .nav_menu {
+        display: none;
+        opacity: 0;
+    }
+}
+
+.hero_section {
+
+}
+
+// ---------------------------------------
+// -------------- H -----------------
+// ---------------------------------------
+
+
+// ---------------------------------------
+// -------------- H -----------------
+// ---------------------------------------
+
+
+// ---------------------------------------
+// -------------- H -----------------
+// ---------------------------------------
