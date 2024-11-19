@@ -10,10 +10,10 @@
 
 <body>
   <header>
-    <section>
+    <section class="nav_section">
       <h1>Gottfrids Munkshop</h1>
       <div class="shopping_cart">
-        <p class="cart_sum"></p>
+        <p class="cart_cost" id="cart_cost_sum"></p>
         <button id="cart_btn" class="cart_button"></button>
       </div>
       <button id="hamburger_menu_btn" class="hamburger_menu"></button>
@@ -42,17 +42,111 @@
     </section>
     <aside class="shopping_cart_page">
       <h2>Varukorg</h2>
+      <div class="cart_products" id="cart_products_added">
+        <!-- get and add from JavaScript -->
+      </div>
+      <div id="total_cart_cost">
+        <!-- add in JavaScript -->
+      </div>
     </aside>
     <section class="order_form_page">
       <h2>Din information:</h2>
       <form>
+        <!-- Användarinformation -->
+        <label>
+          <span>Förnamn</span>
+          <input id="first_name_input" type="text" required>
+        </label>
+        <label>
+          <span>Efternamn</span>
+          <input id="last_name_input" type="text" required>
+        </label>
+        <label>
+          <span>Adress</span>
+          <input id="address_input" type="text" required>
+        </label>
+        <label>
+          <span>Postnummer</span>
+          <input id="postal_code_input" type="text" required>
+        </label>
+        <label>
+          <span>Ort</span>
+          <input id="city_input" type="text" required>
+        </label>
+        <label>
+          <span>Ev. Portkod</span>
+          <input id="gatecode_input" type="number">
+        </label>
+        <label>
+          <span>Telefonnummer</span>
+          <input id="phonenumber_input" type="number" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input id="email_input" type="email" required>
+        </label>
 
+        <!-- Välja betalsätt -->
+        <p>Välj betalsätt</p>
+        <button id="card_payment_btn" type="button">Kort</button>
+        <button id="invoice_payment_btn" type="button">Faktura</button>
+
+        <!-- Om kort: -->
+        <div id="card_payment_fields">
+          <label>
+            <span>Kortnummer</span>
+            <input type="number">
+          </label>
+          <label>
+            <span>Datum/År</span>
+            <input type="number"> <!-- osäker om denna ska vara "number" -->
+          </label>
+          <label>
+            <span>CVC</span>
+            <input type="number">
+          </label>
+        </div>
+
+        <!-- Om Faktura: -->
+        <div id="invoice_payment_field">
+          <label>
+            <span>Personnnummer</span>
+            <input type="number">
+          </label>
+        </div>
+
+        <label>
+          <span>Jag godkänner hantering av mina personuppgifter</span>
+          <input type="checkbox">
+        </label>
+        <label>
+          <span>Jag vill skriva upp mig på ert nyhetsbrev</span>
+          <input type="checkbox">
+        </label>
+
+        <input id="reset_btn" type="reset" value="Rensa och återställ" aria-label="rensa och återställ">
+        <input id="submit_btn" type="submit" value="Skicka beställning" aria-label="skicka beställning">
       </form>
     </section>
 
   </main>
   <footer>
-
+    <!-- Öppettider på låtsas -->
+    <section>
+      <h3>Öppettider</h3>
+      <ul>
+        <li>Måndag-fredag: 00:00-24:00</li>
+        <li>Lördag-Söndag: 00-00-24:00</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Kontaktinfo</h3>
+      <adress>
+        Telefonnummer: <a href="tel: +46123456789">+4671 234 56 78</a><br>
+        Email: <a href="mailto: info@gottfridsmunkar.se">info@gottfridsmunkar.se</a><br>
+        Adress: Munkvägen 10, 123 45, Snaskköping
+      </adress>
+    </section>
   </footer>
 
   <script src="main.js"></script>
