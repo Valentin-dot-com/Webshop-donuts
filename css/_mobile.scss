@@ -12,6 +12,7 @@
     background-color: #1e1f26;
     align-items: center;
     padding: 1rem;
+    position: fixed;
     h1 {
         color: white; //ändra färger osv
     }
@@ -42,10 +43,6 @@
         display: none;
         opacity: 0;
     }
-}
-
-.hero_section {
-
 }
 
 // ---------------------------------------
