@@ -4,7 +4,7 @@
 // ---------------------------------------------
 
 //Array of products (donuts)
-const donut_products = [ //TODO: Lägg till bilder
+const donut_products = [ //TODO: Lägg till bilder och fixa alt-texter
 	{
 		id: 'klassisk_sockermunk',
 		name: 'Klassisk Sockermunk',
@@ -127,3 +127,62 @@ const donut_products = [ //TODO: Lägg till bilder
 	},
 ];
 
+const productListDiv = document.querySelector('#products_list');
+
+printProductsList();
+
+function printProductsList() {
+	productListDiv.innerHTML = ''; //rensa diven på produkter innan utskrift av uppdaterad information
+	donut_products.forEach((product) => {
+		// productListDiv.innerHTML += '<article class="products">' + product.name + '</article>';
+		productListDiv.innerHTML += `
+            <article class="product">
+                <img src="${product.img.url}" alt="${product.img.alt}">
+                <h3>${product.name}</h3>
+                <p>${product.price} kr</p>
+                <p>Rating: ${product.rating}</p>
+            </article>
+            <div>
+                <button class="decrease_btns" id="decrease_${product.id}">Decrease</button>
+                <input type="number" min="0" value="${product.amount}">
+                <button class="increase_btns" id="increase_${product.id}">Increase</button>
+            </div>
+        `;
+	});
+
+    // sätter eventlyssnare varje gång vi uppdaterar, så det finns kvar.
+	const increaseButtons = document.querySelectorAll('button.increase_btns');
+	increaseButtons.forEach((button) => {
+		button.addEventListener('click', increaseProductCount);
+	});
+
+    //TODO: Gör samma för "decrease_button"^^^^
+}
+
+const decreaseButtons = document.querySelectorAll('button.decrease_btns');
+console.log(decreaseButtons);
+
+//-------------------------------------------------------------------------------
+
+function increaseProductCount(e) {
+	const productId = e.target.id.replace('increase_', '');
+	// vi tar bort increase och decrease här för att kunna hitta rätt id i arrayen (då den inte har increase eller decrease i sitt id i arrayen!)
+	console.log('produkt id: ' + productId);
+	// leta rätt på produkten i arrayen som har id:t
+	const foundProductIndex = donut_products.findIndex(
+		(product) => product.id === productId
+	);
+	console.log('index: ' + foundProductIndex);
+	if (foundProductIndex === -1) {
+		console.error('Det finns ingen sådan produkt! Kolla ID_t');
+		return;
+	}
+	donut_products[foundProductIndex].amount += 1;
+	console.log(donut_products[foundProductIndex]);
+	printProductsList();
+}
+
+// öka dess amount med +1
+// skriv ut produktlistan
+
+//---------------------------------------------------------------------------------
