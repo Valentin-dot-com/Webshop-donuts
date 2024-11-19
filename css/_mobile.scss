@@ -13,6 +13,8 @@
     align-items: center;
     padding: 1rem;
     position: fixed;
+    top: 0;
+    z-index: 5;
     h1 {
         color: white; //ändra färger osv
     }
@@ -42,6 +44,33 @@
     button + .nav_menu {
         display: none;
         opacity: 0;
+    }
+}
+
+.hero_section {
+    margin-top: 10vh;
+    position: relative;
+    h2 {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 1rem;
+        color: white;
+    }
+    figure {
+        margin: 0;
+        position: relative;
+        img {
+            filter: blur(0.15rem);
+            filter: brightness(0.6);
+        }
+        figcaption {
+            position: absolute;
+            top: 70%;
+            left: 1rem;
+            color: white;
+        }
     }
 }
 
