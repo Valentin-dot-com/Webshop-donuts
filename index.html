@@ -19,9 +19,9 @@
       <button id="hamburger_menu_btn" class="hamburger_menu"></button>
       <nav class="nav_menu">
         <menu class="menu_list">
-          <li>Munkar</li>
-          <li>Varukorg</li>
-          <li>Gå till kassan</li>
+          <li><a href="#product_page_section">Munkar</a></li>
+          <li><a href="#shopping_cart_aside">Varukorg</a></li>
+          <li><a href="#order_form_section">Gå till kassan</a></li>
         </menu>
       </nav>
     </section>
@@ -34,13 +34,13 @@
     </section>
   </header>
   <main>
-    <section class="product_page">
+    <section id="product_page_section" class="product_page">
       <h2>Munkar</h2>
       <div id="products_list">
         <!-- add items from JavaScript -->
       </div>
     </section>
-    <aside class="shopping_cart_page">
+    <aside id="shopping_cart_aside" class="shopping_cart_page">
       <h2>Varukorg</h2>
       <div class="cart_products" id="cart_products_added">
         <!-- get and add from JavaScript -->
@@ -48,8 +48,9 @@
       <div id="total_cart_cost">
         <!-- add in JavaScript -->
       </div>
+      <button type="button" id="to_checkout_btn">Gå till kassan</button>
     </aside>
-    <section class="order_form_page">
+    <section id="order_form_section" class="order_form_page">
       <h2>Din information:</h2>
       <form>
         <!-- Användarinformation -->
@@ -95,15 +96,15 @@
         <div id="card_payment_fields">
           <label>
             <span>Kortnummer</span>
-            <input type="number">
+            <input id="cardnumber_input" type="number">
           </label>
           <label>
             <span>Datum/År</span>
-            <input type="number"> <!-- osäker om denna ska vara "number" -->
+            <input id="date_year_input" type="number"> <!-- osäker om denna ska vara "number" -->
           </label>
           <label>
             <span>CVC</span>
-            <input type="number">
+            <input id="cvc_input" type="number">
           </label>
         </div>
 
@@ -111,17 +112,17 @@
         <div id="invoice_payment_field">
           <label>
             <span>Personnnummer</span>
-            <input type="number">
+            <input id="social_security_number_input" type="number">
           </label>
         </div>
 
         <label>
           <span>Jag godkänner hantering av mina personuppgifter</span>
-          <input type="checkbox">
+          <input id="personal_data_checkbox" type="checkbox">
         </label>
         <label>
           <span>Jag vill skriva upp mig på ert nyhetsbrev</span>
-          <input type="checkbox">
+          <input id="newsletter_checkbox" type="checkbox">
         </label>
 
         <input id="reset_btn" type="reset" value="Rensa och återställ" aria-label="rensa och återställ">
