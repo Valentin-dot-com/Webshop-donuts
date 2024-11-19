@@ -1,10 +1,10 @@
-
 // ---------------------------------------------
 // ------------ Products section ---------------
 // ---------------------------------------------
 
 //Array of products (donuts)
-const donut_products = [ //TODO: Lägg till bilder och fixa alt-texter
+const donut_products = [
+	//TODO: Lägg till bilder och fixa alt-texter
 	{
 		id: 'klassisk_sockermunk',
 		name: 'Klassisk Sockermunk',
@@ -41,7 +41,7 @@ const donut_products = [ //TODO: Lägg till bilder och fixa alt-texter
 			alt: 'donut where the glacing looks like a smiling and happy frog',
 		},
 	},
-    {
+	{
 		id: 'citron_vallmo',
 		name: 'Citron och Vallmofrö',
 		price: 12,
@@ -53,7 +53,7 @@ const donut_products = [ //TODO: Lägg till bilder och fixa alt-texter
 			alt: 'Pink donut in a cartoon artstyle',
 		},
 	},
-    {
+	{
 		id: 'hallon_pistage',
 		name: 'Hallon och Pistage',
 		price: 15,
@@ -65,7 +65,7 @@ const donut_products = [ //TODO: Lägg till bilder och fixa alt-texter
 			alt: 'Pink donut in a cartoon artstyle',
 		},
 	},
-    {
+	{
 		id: 'nutella_hasselnot',
 		name: 'Nutella och Hasselnöt',
 		price: 20,
@@ -77,7 +77,7 @@ const donut_products = [ //TODO: Lägg till bilder och fixa alt-texter
 			alt: 'Pink donut in a cartoon artstyle',
 		},
 	},
-    {
+	{
 		id: 'vanilj_blabar',
 		name: 'Vanilj och Blåbär',
 		price: 13,
@@ -89,7 +89,7 @@ const donut_products = [ //TODO: Lägg till bilder och fixa alt-texter
 			alt: 'Pink donut in a cartoon artstyle',
 		},
 	},
-    {
+	{
 		id: 'matcha_kokos',
 		name: 'Matcha och Kokos',
 		price: 18,
@@ -101,7 +101,7 @@ const donut_products = [ //TODO: Lägg till bilder och fixa alt-texter
 			alt: 'Pink donut in a cartoon artstyle',
 		},
 	},
-    {
+	{
 		id: 'apple_kanel',
 		name: 'Äpple och Kanel',
 		price: 18,
@@ -113,7 +113,7 @@ const donut_products = [ //TODO: Lägg till bilder och fixa alt-texter
 			alt: 'Pink donut in a cartoon artstyle',
 		},
 	},
-    {
+	{
 		id: 'jordgubbscheesecake',
 		name: 'Jordgubscheesecake',
 		price: 20,
@@ -141,22 +141,22 @@ function printProductsList() {
                 <h3>${product.name}</h3>
                 <p>${product.price} kr</p>
                 <p>Rating: ${product.rating}</p>
+                <div class="count_buttons">
+                    <button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
+                    <input type="number" min="0" value="${product.amount}">
+                    <button class="increase_btns" id="increase_${product.id}"><span class="material-symbols-outlined">add</span></button>
+                </div>
             </article>
-            <div>
-                <button class="decrease_btns" id="decrease_${product.id}">Decrease</button>
-                <input type="number" min="0" value="${product.amount}">
-                <button class="increase_btns" id="increase_${product.id}">Increase</button>
-            </div>
         `;
 	});
 
-    // sätter eventlyssnare varje gång vi uppdaterar, så det finns kvar.
+	// sätter eventlyssnare varje gång vi uppdaterar, så det finns kvar.
 	const increaseButtons = document.querySelectorAll('button.increase_btns');
 	increaseButtons.forEach((button) => {
 		button.addEventListener('click', increaseProductCount);
 	});
 
-    //TODO: Gör samma för "decrease_button"^^^^
+	//TODO: Gör samma för "decrease_button"^^^^
 }
 
 const decreaseButtons = document.querySelectorAll('button.decrease_btns');
