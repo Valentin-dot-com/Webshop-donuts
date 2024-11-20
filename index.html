@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gottfrids Munkshop</title>
   <link rel="stylesheet" href="css/style.css" type="text/css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
 </head>
 
 <body>
@@ -18,7 +19,7 @@
         <button id="cart_btn" class="cart_button">
           <span class="material-symbols-outlined">
             shopping_cart
-            </span>
+          </span>
         </button>
       </div>
       <button id="hamburger_menu_btn">
@@ -98,8 +99,10 @@
 
         <!-- Välja betalsätt -->
         <p>Välj betalsätt</p>
-        <button id="card_payment_btn" type="button">Kort</button>
-        <button id="invoice_payment_btn" type="button">Faktura</button>
+        <div class="payment_choice_btn">
+          <button id="card_payment_btn" type="button">Kort</button>
+          <button id="invoice_payment_btn" type="button">Faktura</button>
+        </div>
 
         <!-- Om kort: -->
         <div id="card_payment_fields">
@@ -134,8 +137,10 @@
           <input id="newsletter_checkbox" type="checkbox">
         </label>
 
-        <input id="reset_btn" type="reset" value="Rensa och återställ" aria-label="rensa och återställ">
-        <input id="submit_btn" type="submit" value="Skicka beställning" aria-label="skicka beställning">
+        <input class="reset_form" id="reset_btn" type="reset" value="Rensa och återställ"
+          aria-label="rensa och återställ">
+        <input class="submit_form" id="submit_btn" type="submit" value="Skicka beställning"
+          aria-label="skicka beställning">
       </form>
     </section>
 
