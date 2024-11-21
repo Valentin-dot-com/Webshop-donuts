@@ -132,9 +132,9 @@ const productListDiv = document.querySelector('#products_list');
 printProductsList();
 
 function printProductsList() {
-	productListDiv.innerHTML = ''; //rensa diven på produkter innan utskrift av uppdaterad information
+	//rensa diven på produkter innan utskrift av uppdaterad information
+	productListDiv.innerHTML = '';
 	donut_products.forEach((product) => {
-		// productListDiv.innerHTML += '<article class="products">' + product.name + '</article>';
 		productListDiv.innerHTML += `
             <article class="product">
                 <img src="${product.img.url}" alt="${product.img.alt}">
@@ -150,13 +150,12 @@ function printProductsList() {
         `;
 	});
 
-	// sätter eventlyssnare varje gång vi uppdaterar, så det finns kvar.
+	// sätter eventlyssnare varje gång vi uppdaterar, så det finns kvar
 	const increaseButtons = document.querySelectorAll('button.increase_btns');
 	increaseButtons.forEach((button) => {
 		button.addEventListener('click', increaseProductCount);
 	});
-
-	//TODO: Gör samma för "decrease_button"^^^^
+	// gör samma som ovan fast på decrease knapparna
 	const decreaseButtons = document.querySelectorAll('button.decrease_btns');
 	decreaseButtons.forEach((button) => {
 		button.addEventListener('click', decreaseProductCount);
@@ -166,36 +165,29 @@ function printProductsList() {
 //-------------------------------------------------------------------------------
 
 function increaseProductCount(e) {
-	const productId = e.target.id.replace('increase_', '');
 	// vi tar bort increase och decrease här för att kunna hitta rätt id i arrayen (då den inte har increase eller decrease i sitt id i arrayen!)
-	console.log('produkt id: ' + productId);
+	const productId = e.target.id.replace('increase_', '');
 	// leta rätt på produkten i arrayen som har id:t
 	const foundProductIndex = donut_products.findIndex(
 		(product) => product.id === productId
 	);
-	console.log('index: ' + foundProductIndex);
 	if (foundProductIndex === -1) {
-		console.error('Det finns ingen sådan produkt! Kolla ID_t');
 		return;
 	}
 	donut_products[foundProductIndex].amount += 1;
-	console.log(donut_products[foundProductIndex]);
 	printProductsList();
 }
 
 //---------------------------------------------------------------------------------
 
 function decreaseProductCount(e) {
-	const productId = e.target.id.replace('decrease_', '');
 	// vi tar bort increase och decrease här för att kunna hitta rätt id i arrayen (då den inte har increase eller decrease i sitt id i arrayen!)
-	console.log('produkt id: ' + productId);
+	const productId = e.target.id.replace('decrease_', '');
 	// leta rätt på produkten i arrayen som har id:t
 	const foundProductIndex = donut_products.findIndex(
 		(product) => product.id === productId
 	);
-	console.log('index: ' + foundProductIndex);
 	if (foundProductIndex === -1) {
-		console.error('Det finns ingen sådan produkt! Kolla ID_t');
 		return;
 	}
 	//ifall amount ligger på 0 vill vi inte få minus när vi trycker på -
@@ -203,6 +195,5 @@ function decreaseProductCount(e) {
 		return;
 	}
 	donut_products[foundProductIndex].amount -= 1;
-	console.log(donut_products[foundProductIndex]);
 	printProductsList();
 }
