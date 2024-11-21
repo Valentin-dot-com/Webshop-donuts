@@ -127,15 +127,15 @@ const donut_products = [
 	},
 ];
 
-const productListDiv = document.querySelector('#products_list');
+const product_list_div = document.querySelector('#products_list');
 
-printProductsList();
+print_products_list();
 
-function printProductsList() {
+function print_products_list() {
 	//rensa diven på produkter innan utskrift av uppdaterad information
-	productListDiv.innerHTML = '';
+	product_list_div.innerHTML = '';
 	donut_products.forEach((product) => {
-		productListDiv.innerHTML += `
+		product_list_div.innerHTML += `
             <article class="product">
                 <img src="${product.img.url}" alt="${product.img.alt}">
                 <h3>${product.name}</h3>
@@ -151,49 +151,86 @@ function printProductsList() {
 	});
 
 	// sätter eventlyssnare varje gång vi uppdaterar, så det finns kvar
-	const increaseButtons = document.querySelectorAll('button.increase_btns');
-	increaseButtons.forEach((button) => {
-		button.addEventListener('click', increaseProductCount);
+	const increase_buttons = document.querySelectorAll('button.increase_btns');
+	increase_buttons.forEach((button) => {
+		button.addEventListener('click', increase_product_count);
 	});
 	// gör samma som ovan fast på decrease knapparna
-	const decreaseButtons = document.querySelectorAll('button.decrease_btns');
-	decreaseButtons.forEach((button) => {
-		button.addEventListener('click', decreaseProductCount);
+	const decrease_buttons = document.querySelectorAll('button.decrease_btns');
+	decrease_buttons.forEach((button) => {
+		button.addEventListener('click', decrease_product_count);
 	});
 }
 
 //-------------------------------------------------------------------------------
 
-function increaseProductCount(e) {
+function increase_product_count(e) {
 	// vi tar bort increase och decrease här för att kunna hitta rätt id i arrayen (då den inte har increase eller decrease i sitt id i arrayen!)
-	const productId = e.target.id.replace('increase_', '');
+	const product_id = e.target.id.replace('increase_', '');
 	// leta rätt på produkten i arrayen som har id:t
-	const foundProductIndex = donut_products.findIndex(
-		(product) => product.id === productId
+	const found_product_index = donut_products.findIndex(
+		(product) => product.id === product_id
 	);
-	if (foundProductIndex === -1) {
+	if (found_product_index === -1) {
 		return;
 	}
-	donut_products[foundProductIndex].amount += 1;
-	printProductsList();
+	donut_products[found_product_index].amount += 1;
+	print_products_list();
+	update_and_print_cart();
 }
 
 //---------------------------------------------------------------------------------
 
-function decreaseProductCount(e) {
+function decrease_product_count(e) {
 	// vi tar bort increase och decrease här för att kunna hitta rätt id i arrayen (då den inte har increase eller decrease i sitt id i arrayen!)
-	const productId = e.target.id.replace('decrease_', '');
+	const product_id = e.target.id.replace('decrease_', '');
 	// leta rätt på produkten i arrayen som har id:t
-	const foundProductIndex = donut_products.findIndex(
-		(product) => product.id === productId
+	const found_product_index = donut_products.findIndex(
+		(product) => product.id === product_id
 	);
-	if (foundProductIndex === -1) {
+	if (found_product_index === -1) {
 		return;
 	}
 	//ifall amount ligger på 0 vill vi inte få minus när vi trycker på -
-	if (donut_products[foundProductIndex].amount == 0) {
+	if (donut_products[found_product_index].amount == 0) {
 		return;
 	}
-	donut_products[foundProductIndex].amount -= 1;
-	printProductsList();
+	donut_products[found_product_index].amount -= 1;
+	print_products_list();
+	update_and_print_cart();
+}
+
+// ---------------------------------------------
+// --------- Shopping Cart section -------------
+// ---------------------------------------------
+
+const shopping_cart_products_overview = document.querySelector(
+	'#cart_products_added'
+);
+
+function update_and_print_cart() {
+	// vi vill bara ha de produkter i vår array som har en amount som är större än 0
+	const purschased_products = donut_products.filter(
+		(product) => product.amount > 0
+	);
+	// ifall användaren tar bort alla produkter i varukorgen vill vi skriva att den är tom
+	if (purschased_products.length === 0) {
+		shopping_cart_products_overview.innerHTML = `
+		<p>
+			Din varukorg är tom
+		</p>
+		`;
+		// TODO: lägg till att "Till kassan"-knappen försvinner här, och visas när något läggs till i listan (desktop verison bara tror jag);
+		return;
+	}
+	// rensa föregående text
+	shopping_cart_products_overview.innerHTML = '';
+	// för varje produkt som matchar vårt filter (amount > 0) så skriver vi ut en <p> med namn, antal och totalt pris.
+	purschased_products.forEach((product) => {
+		shopping_cart_products_overview.innerHTML += `
+		<p>
+			${product.name}: ${product.amount}st - ${product.amount * product.price}kr
+		</p>
+		`;
+	});
 }
