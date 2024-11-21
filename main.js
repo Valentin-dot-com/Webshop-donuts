@@ -13,8 +13,10 @@ const donut_products = [
 		category: 'Klassisk',
 		amount: 0,
 		img: {
-			url: 'assets/product_images/cartoon_pink_donut.jpg',
-			alt: 'Pink donut in a cartoon artstyle',
+			url: 'assets/product_images/sugar_donut.jpg',
+			width: 1024,
+			height: 1024,
+			alt: 'en enstaka klassisk munk med sockerglasyr och florsocker på en grå bakgrund',
 		},
 	},
 	{
@@ -25,8 +27,10 @@ const donut_products = [
 		category: 'Choklad drömmar', //ändra
 		amount: 0,
 		img: {
-			url: 'assets/product_images/cartoon_cat_donut.jpg',
-			alt: 'donut in a cartoon artstyle where the glacing is an a form of a pink cat',
+			url: 'assets/product_images/chocolate_donut.jpg',
+			width: 1024,
+			height: 1024,
+			alt: 'en enstaka choklad-doppad munk med färgglatt strössel på framför en vit bakgrund',
 		},
 	},
 	{
@@ -37,8 +41,10 @@ const donut_products = [
 		category: 'Friterad lyx',
 		amount: 0,
 		img: {
-			url: 'assets/product_images/frog_donut.jpg',
-			alt: 'donut where the glacing looks like a smiling and happy frog',
+			url: 'assets/product_images/salted_caramel_donut.jpg',
+			width: 1024,
+			height: 1024,
+			alt: 'en enstaka munk med karamell-glasyr som droppar ner från munken på en vit bakgrund',
 		},
 	},
 	{
@@ -49,8 +55,10 @@ const donut_products = [
 		category: 'Syrligt!',
 		amount: 0,
 		img: {
-			url: 'assets/product_images/cartoon_pink_donut.jpg',
-			alt: 'Pink donut in a cartoon artstyle',
+			url: 'assets/product_images/lemon_poppyseed_donut.jpg',
+			width: 1024,
+			height: 1024,
+			alt: 'en enstaka munk med en gul citron-glasyr toppad med vallmofrön på en vit bakgrund',
 		},
 	},
 	{
@@ -61,8 +69,10 @@ const donut_products = [
 		category: 'Bär på en munk',
 		amount: 0,
 		img: {
-			url: 'assets/product_images/cartoon_pink_donut.jpg',
-			alt: 'Pink donut in a cartoon artstyle',
+			url: 'assets/product_images/raspberry_pistachio_donut.jpg',
+			width: 1024,
+			height: 1024,
+			alt: 'en enstaka munk med en rosa hallon-glasyr toppad med pistagenötter på en vit bakgrund',
 		},
 	},
 	{
@@ -73,8 +83,10 @@ const donut_products = [
 		category: 'Choklad drömmar',
 		amount: 0,
 		img: {
-			url: 'assets/product_images/cartoon_pink_donut.jpg',
-			alt: 'Pink donut in a cartoon artstyle',
+			url: 'assets/product_images/nutella_hazelnut_donut.jpg',
+			width: 1024,
+			height: 1024,
+			alt: 'en enstaka munk med en nutella-glasyr toppad med choklad och hasselnötter på en brun bakgrund',
 		},
 	},
 	{
@@ -85,8 +97,10 @@ const donut_products = [
 		category: 'Bär på en munk',
 		amount: 0,
 		img: {
-			url: 'assets/product_images/cartoon_pink_donut.jpg',
-			alt: 'Pink donut in a cartoon artstyle',
+			url: 'assets/product_images/vanilla_blueberry_donut.jpg',
+			width: 1024,
+			height: 1024,
+			alt: 'en enstaka munk med en vit vaniljglasyr toppad med små blåbär på en vit tallrik',
 		},
 	},
 	{
@@ -97,8 +111,10 @@ const donut_products = [
 		category: 'Kryddiga och värmande',
 		amount: 0,
 		img: {
-			url: 'assets/product_images/cartoon_pink_donut.jpg',
-			alt: 'Pink donut in a cartoon artstyle',
+			url: 'assets/product_images/matcha_coconut_donut.jpg',
+			width: 1024,
+			height: 1024,
+			alt: 'en enstaka munk med en grön matcha-glasyr toppad med kokosflingor på en vit bakgrund',
 		},
 	},
 	{
@@ -109,8 +125,10 @@ const donut_products = [
 		category: 'Kryddiga och värmande',
 		amount: 0,
 		img: {
-			url: 'assets/product_images/cartoon_pink_donut.jpg',
-			alt: 'Pink donut in a cartoon artstyle',
+			url: 'assets/product_images/apples_cinnamon_donut.jpg',
+			width: 1024,
+			height: 1024,
+			alt: 'en enstaka munk med en brun kanel-glasyr toppad med små äppelbitar och kanel på en vit bakgrund',
 		},
 	},
 	{
@@ -121,8 +139,10 @@ const donut_products = [
 		category: 'Bär på en munk',
 		amount: 0,
 		img: {
-			url: 'assets/product_images/cartoon_pink_donut.jpg',
-			alt: 'Pink donut in a cartoon artstyle',
+			url: 'assets/product_images/strawberry_cheesecake_donut.jpg',
+			width: 1024,
+			height: 1024,
+			alt: 'en enstaka munk med en vit färskost-glasyr toppad med kaksmulor och en jordgubbe i munkens mitten, på en vit bakgrund',
 		},
 	},
 ];
