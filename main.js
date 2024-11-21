@@ -143,7 +143,7 @@ function printProductsList() {
                 <p>Rating: ${product.rating}</p>
                 <div class="count_buttons">
                     <button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
-                    <input type="number" min="0" value="${product.amount}">
+                    <span>${product.amount}</span>
                     <button class="increase_btns" id="increase_${product.id}"><span class="material-symbols-outlined">add</span></button>
                 </div>
             </article>
@@ -157,10 +157,11 @@ function printProductsList() {
 	});
 
 	//TODO: Gör samma för "decrease_button"^^^^
+	const decreaseButtons = document.querySelectorAll('button.decrease_btns');
+	decreaseButtons.forEach((button) => {
+		button.addEventListener('click', decreaseProductCount);
+	});
 }
-
-const decreaseButtons = document.querySelectorAll('button.decrease_btns');
-console.log(decreaseButtons);
 
 //-------------------------------------------------------------------------------
 
@@ -182,7 +183,26 @@ function increaseProductCount(e) {
 	printProductsList();
 }
 
-// öka dess amount med +1
-// skriv ut produktlistan
-
 //---------------------------------------------------------------------------------
+
+function decreaseProductCount(e) {
+	const productId = e.target.id.replace('decrease_', '');
+	// vi tar bort increase och decrease här för att kunna hitta rätt id i arrayen (då den inte har increase eller decrease i sitt id i arrayen!)
+	console.log('produkt id: ' + productId);
+	// leta rätt på produkten i arrayen som har id:t
+	const foundProductIndex = donut_products.findIndex(
+		(product) => product.id === productId
+	);
+	console.log('index: ' + foundProductIndex);
+	if (foundProductIndex === -1) {
+		console.error('Det finns ingen sådan produkt! Kolla ID_t');
+		return;
+	}
+	//ifall amount ligger på 0 vill vi inte få minus när vi trycker på -
+	if (donut_products[foundProductIndex].amount == 0) {
+		return;
+	}
+	donut_products[foundProductIndex].amount -= 1;
+	console.log(donut_products[foundProductIndex]);
+	printProductsList();
+}
