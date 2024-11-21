@@ -233,6 +233,7 @@ function update_and_print_cart() {
 	const purschased_products = donut_products.filter(
 		(product) => product.amount > 0
 	);
+	let total_sum = 0;
 	// ifall användaren tar bort alla produkter i varukorgen vill vi skriva att den är tom
 	if (purschased_products.length === 0) {
 		shopping_cart_products_overview.innerHTML = `
@@ -247,10 +248,17 @@ function update_and_print_cart() {
 	shopping_cart_products_overview.innerHTML = '';
 	// för varje produkt som matchar vårt filter (amount > 0) så skriver vi ut en <p> med namn, antal och totalt pris.
 	purschased_products.forEach((product) => {
+		total_sum += product.amount * product.price;
 		shopping_cart_products_overview.innerHTML += `
 		<p>
 			${product.name}: ${product.amount}st - ${product.amount * product.price}kr
 		</p>
 		`;
 	});
+	//för att printa ut totalsumman av alla produkter i varukorgen
+	shopping_cart_products_overview.innerHTML += `
+	<p> 
+		Totalsumma: ${total_sum}
+	</p>
+	`
 }
