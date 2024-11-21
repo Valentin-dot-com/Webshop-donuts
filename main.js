@@ -260,5 +260,5 @@ function update_and_print_cart() {
 	<p> 
 		Totalsumma: ${total_sum}kr
 	</p>
-	`
+	`;
 }
