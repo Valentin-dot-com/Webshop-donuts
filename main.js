@@ -258,7 +258,7 @@ function update_and_print_cart() {
 	//för att printa ut totalsumman av alla produkter i varukorgen
 	shopping_cart_products_overview.innerHTML += `
 	<p> 
-		Totalsumma: ${total_sum}
+		Totalsumma: ${total_sum}kr
 	</p>
 	`
 }
