@@ -201,6 +201,7 @@ function increase_product_count(e) {
 	update_and_print_cart();
 	// för att behålla fokus på knappen
 	document.querySelector(`#${clicked_button_id}`).focus();
+	// TODO: Koppla så att när denna klickas i så ska visuell feedback ges att varukorgen uppdaterats
 }
 
 //---------------------------------------------------------------------------------
@@ -226,6 +227,8 @@ function decrease_product_count(e) {
 	update_and_print_cart();
 	// för att behålla fokus på knappen
 	document.querySelector(`#${clicked_button_id}`).focus();
+	// TODO: Koppla så att när denna klickas i så ska visuell feedback ges att varukorgen uppdaterats
+
 }
 
 // ---------------------------------------------
