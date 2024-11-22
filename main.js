@@ -187,6 +187,8 @@ function print_products_list() {
 function increase_product_count(e) {
 	// vi tar bort increase och decrease här för att kunna hitta rätt id i arrayen (då den inte har increase eller decrease i sitt id i arrayen!)
 	const product_id = e.target.id.replace('increase_', '');
+	// spara id för knappen vi trycker på, för att kunna behålla fokus
+	const clicked_button_id = e.target.id;
 	// leta rätt på produkten i arrayen som har id:t
 	const found_product_index = donut_products.findIndex(
 		(product) => product.id === product_id
@@ -197,6 +199,8 @@ function increase_product_count(e) {
 	donut_products[found_product_index].amount += 1;
 	print_products_list();
 	update_and_print_cart();
+	// för att behålla fokus på knappen
+	document.querySelector(`#${clicked_button_id}`).focus();
 }
 
 //---------------------------------------------------------------------------------
@@ -204,6 +208,8 @@ function increase_product_count(e) {
 function decrease_product_count(e) {
 	// vi tar bort increase och decrease här för att kunna hitta rätt id i arrayen (då den inte har increase eller decrease i sitt id i arrayen!)
 	const product_id = e.target.id.replace('decrease_', '');
+	// spara id för knappen vi trycker på, för att kunna behålla fokus
+	const clicked_button_id = e.target.id;
 	// leta rätt på produkten i arrayen som har id:t
 	const found_product_index = donut_products.findIndex(
 		(product) => product.id === product_id
@@ -218,6 +224,8 @@ function decrease_product_count(e) {
 	donut_products[found_product_index].amount -= 1;
 	print_products_list();
 	update_and_print_cart();
+	// för att behålla fokus på knappen
+	document.querySelector(`#${clicked_button_id}`).focus();
 }
 
 // ---------------------------------------------
