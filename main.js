@@ -166,7 +166,7 @@ function print_products_list() {
 	//rensa diven på produkter innan utskrift av uppdaterad information
 	product_list_div.innerHTML = '';
 
-	// om det är fredag efter 15 till måndag 03:00, skulle vilja skriva denna kod kortare/ bättre, den känns onödigt lång och lite "mycke" kanske
+	// om det är fredag efter 15 till måndag 03:00 så uppdateras price_increase
 	if ((is_friday && today.getHours() >= 15) || is_saturday || is_sunday || (is_monday && today.getHours() <= 3)) {
 		console.log('Det är helg'); // TODO: kan ta bort denna log efter jag sett att det funkar på helgen
 		price_increase = 1.15;
