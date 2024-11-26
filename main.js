@@ -297,14 +297,14 @@ function update_and_print_cart() {
 	</p>
 	`;
 	// Om det är måndag morgon, rabatt
-	if (today.getDay() === 1 && today.getHours() < 10) {
-		final_order_sum = total_sum * 0.9;
+	if (today.getDay() === 2 && today.getHours() < 11) {
+		final_order_sum = Math.round(total_sum * 0.9);
 		shopping_cart_products_overview.innerHTML += `
 		<p class="discount">
-			Måndag morgon-rabatt, 10% dras av från din beställning: - ${total_sum * 0.1}kr
+			Måndag morgon-rabatt, 10% dras av från din beställning: - ${Math.round(total_sum * 0.1)}kr
 		</p>
 		<p class="discount_total_sum">
-			Ny totalsumma: ${total_sum * 0.9}kr
+			Ny totalsumma: ${final_order_sum}kr
 		</p>
 		`;
 	}
