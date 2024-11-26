@@ -297,7 +297,7 @@ function update_and_print_cart() {
 	</p>
 	`;
 	// Om det är måndag morgon, rabatt
-	if (today.getDay() === 2 && today.getHours() < 11) {
+	if (today.getDay() === 1 && today.getHours() < 10) {
 		final_order_sum = Math.round(total_sum * 0.9);
 		shopping_cart_products_overview.innerHTML += `
 		<p class="discount">
