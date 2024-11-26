@@ -146,28 +146,57 @@ const donut_products = [
 	},
 ];
 
+const today = new Date();
+
 const product_list_div = document.querySelector('#products_list');
+
+const weekend_prices = donut_products.map(product => Math.round(product.price * 1.15))
+console.table(weekend_prices);
 
 print_products_list();
 
 function print_products_list() {
 	//rensa diven på produkter innan utskrift av uppdaterad information
 	product_list_div.innerHTML = '';
-	donut_products.forEach((product) => {
-		product_list_div.innerHTML += `
-            <article class="product">
-                <img src="${product.img.url}" alt="${product.img.alt}">
-                <h3>${product.name}</h3>
-                <p>${product.price} kr</p>
-                <p>Rating: ${product.rating}</p>
-                <div class="count_buttons">
-                    <button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
-                    <span>${product.amount}</span>
-                    <button class="increase_btns" id="increase_${product.id}"><span class="material-symbols-outlined">add</span></button>
-                </div>
-            </article>
-        `;
-	});
+	// om det är fredag efter 15 till måndag 03:00, skulle vilja skriva denna kod kortare/ bättre, den känns onödigt lång och lite "mycke" kanske 
+	if ((today.getDay() === 5 && today.getHours() >= 15) || (today.getDay() === 6) || (today.getDay() === 0) || (today.getDay() === 1 && today.getHours() <= 3)) {
+		console.log('Det är helg'); // TODO: kan ta bort denna log efter jag sett att det funkar på helgen
+		let iteration_index = 0;
+		donut_products.forEach((product) => {
+			product_list_div.innerHTML += `
+				<article class="product">
+					<img src="${product.img.url}" alt="${product.img.alt}">
+					<h3>${product.name}</h3>
+					<p>${weekend_prices[iteration_index]} kr</p>
+					<p>Rating: ${product.rating}</p>
+					<div class="count_buttons">
+						<button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
+						<span>${product.amount}</span>
+						<button class="increase_btns" id="increase_${product.id}"><span class="material-symbols-outlined">add</span></button>
+					</div>
+				</article>
+			`;
+			iteration_index +=1;
+		});
+	}
+	else {
+		console.log('Det är inte helg'); // TODO: kan ta bort denna log efter jag sett att det funkar på helgen
+		donut_products.forEach((product) => {
+			product_list_div.innerHTML += `
+				<article class="product">
+					<img src="${product.img.url}" alt="${product.img.alt}">
+					<h3>${product.name}</h3>
+					<p>${product.price} kr</p>
+					<p>Rating: ${product.rating}</p>
+					<div class="count_buttons">
+						<button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
+						<span>${product.amount}</span>
+						<button class="increase_btns" id="increase_${product.id}"><span class="material-symbols-outlined">add</span></button>
+					</div>
+				</article>
+			`;
+		});
+	}
 
 	// sätter eventlyssnare varje gång vi uppdaterar, så det finns kvar
 	const increase_buttons = document.querySelectorAll('button.increase_btns');
@@ -189,9 +218,7 @@ function increase_product_count(e) {
 	// spara id för knappen vi trycker på, för att kunna behålla fokus
 	const clicked_button_id = e.target.id;
 	// leta rätt på produkten i arrayen som har id:t
-	const found_product_index = donut_products.findIndex(
-		(product) => product.id === product_id
-	);
+	const found_product_index = donut_products.findIndex((product) => product.id === product_id);
 	if (found_product_index === -1) {
 		return;
 	}
@@ -211,9 +238,7 @@ function decrease_product_count(e) {
 	// spara id för knappen vi trycker på, för att kunna behålla fokus
 	const clicked_button_id = e.target.id;
 	// leta rätt på produkten i arrayen som har id:t
-	const found_product_index = donut_products.findIndex(
-		(product) => product.id === product_id
-	);
+	const found_product_index = donut_products.findIndex((product) => product.id === product_id);
 	if (found_product_index === -1) {
 		return;
 	}
@@ -227,7 +252,6 @@ function decrease_product_count(e) {
 	// för att behålla fokus på knappen
 	document.querySelector(`#${clicked_button_id}`).focus();
 	// TODO: Koppla så att när denna klickas i så ska visuell feedback ges att varukorgen uppdaterats
-
 }
 
 // ---------------------------------------------
@@ -236,11 +260,12 @@ function decrease_product_count(e) {
 
 const shopping_cart_products_overview = document.querySelector('#cart_products_added');
 
+// för att ha en slutlig totalsumma utanför funktionen
+let final_order_sum = 0;
+
 function update_and_print_cart() {
 	// vi vill bara ha de produkter i vår array som har en amount som är större än 0
-	const purschased_products = donut_products.filter(
-		(product) => product.amount > 0
-	);
+	const purschased_products = donut_products.filter((product) => product.amount > 0);
 	let total_sum = 0;
 	// ifall användaren tar bort alla produkter i varukorgen vill vi skriva att den är tom
 	if (purschased_products.length === 0) {
@@ -249,6 +274,7 @@ function update_and_print_cart() {
 			Din varukorg är tom
 		</p>
 		`;
+		final_order_sum = 0;
 		// TODO: lägg till att "Till kassan"-knappen försvinner här, och visas när något läggs till i listan (desktop verison bara tror jag);
 		return;
 	}
@@ -258,15 +284,28 @@ function update_and_print_cart() {
 	purschased_products.forEach((product) => {
 		total_sum += product.amount * product.price;
 		shopping_cart_products_overview.innerHTML += `
-		<p>
+		<p class="shopping_cart_products">
 			${product.name}: ${product.amount}st - ${product.amount * product.price}kr
 		</p>
 		`;
 	});
+	final_order_sum = total_sum;
 	//för att printa ut totalsumman av alla produkter i varukorgen
 	shopping_cart_products_overview.innerHTML += `
-	<p> 
+	<p class="total_sum"> 
 		Totalsumma: ${total_sum}kr
 	</p>
 	`;
+	// Om det är måndag morgon, rabatt
+	if (today.getDay() === 1 && today.getHours() < 10) {
+		final_order_sum = total_sum * 0.9;
+		shopping_cart_products_overview.innerHTML += `
+		<p class="discount">
+			Måndag morgon-rabatt, 10% dras av från din beställning: - ${total_sum * 0.1}kr
+		</p>
+		<p class="discount_total_sum">
+			Ny totalsumma: ${total_sum * 0.9}kr
+		</p>
+		`;
+	}
 }
