@@ -150,53 +150,45 @@ const today = new Date();
 
 const product_list_div = document.querySelector('#products_list');
 
-const weekend_prices = donut_products.map(product => Math.round(product.price * 1.15))
-console.table(weekend_prices);
+const weekend_prices = donut_products.map((product) => Math.round(product.price * 1.15));
+
+const is_friday = today.getDay() === 5;
+const is_saturday = today.getDay() === 6;
+const is_sunday = today.getDay() === 0;
+const is_monday = today.getDay() === 1;
+
+let price_increase = 1;
+const bulk_purchase_discount = 0.9;
 
 print_products_list();
 
 function print_products_list() {
 	//rensa diven på produkter innan utskrift av uppdaterad information
 	product_list_div.innerHTML = '';
-	// om det är fredag efter 15 till måndag 03:00, skulle vilja skriva denna kod kortare/ bättre, den känns onödigt lång och lite "mycke" kanske 
-	if ((today.getDay() === 5 && today.getHours() >= 15) || (today.getDay() === 6) || (today.getDay() === 0) || (today.getDay() === 1 && today.getHours() <= 3)) {
+
+	// om det är fredag efter 15 till måndag 03:00, skulle vilja skriva denna kod kortare/ bättre, den känns onödigt lång och lite "mycke" kanske
+	if ((is_friday && today.getHours() >= 15) || is_saturday || is_sunday || (is_monday && today.getHours() <= 3)) {
 		console.log('Det är helg'); // TODO: kan ta bort denna log efter jag sett att det funkar på helgen
-		let iteration_index = 0;
-		donut_products.forEach((product) => {
-			product_list_div.innerHTML += `
-				<article class="product">
-					<img src="${product.img.url}" alt="${product.img.alt}">
-					<h3>${product.name}</h3>
-					<p>${weekend_prices[iteration_index]} kr</p>
-					<p>Rating: ${product.rating}</p>
-					<div class="count_buttons">
-						<button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
-						<span>${product.amount}</span>
-						<button class="increase_btns" id="increase_${product.id}"><span class="material-symbols-outlined">add</span></button>
-					</div>
-				</article>
-			`;
-			iteration_index +=1;
-		});
-	}
-	else {
+		price_increase = 1.15;
+	} else {
 		console.log('Det är inte helg'); // TODO: kan ta bort denna log efter jag sett att det funkar på helgen
-		donut_products.forEach((product) => {
-			product_list_div.innerHTML += `
-				<article class="product">
-					<img src="${product.img.url}" alt="${product.img.alt}">
-					<h3>${product.name}</h3>
-					<p>${product.price} kr</p>
-					<p>Rating: ${product.rating}</p>
-					<div class="count_buttons">
-						<button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
-						<span>${product.amount}</span>
-						<button class="increase_btns" id="increase_${product.id}"><span class="material-symbols-outlined">add</span></button>
-					</div>
-				</article>
-			`;
-		});
+		price_increase = 1;
 	}
+	donut_products.forEach((product) => {
+		product_list_div.innerHTML += `
+			<article class="product">
+				<img src="${product.img.url}" alt="${product.img.alt}">
+				<h3>${product.name}</h3>
+				<p>${Math.round(product.price * price_increase)} kr</p>
+				<p>Rating: ${product.rating}</p>
+				<div class="count_buttons">
+					<button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
+					<span>${product.amount}</span>
+					<button class="increase_btns" id="increase_${product.id}"><span class="material-symbols-outlined">add</span></button>
+				</div>
+			</article>
+		`;
+	});
 
 	// sätter eventlyssnare varje gång vi uppdaterar, så det finns kvar
 	const increase_buttons = document.querySelectorAll('button.increase_btns');
@@ -260,52 +252,61 @@ function decrease_product_count(e) {
 
 const shopping_cart_products_overview = document.querySelector('#cart_products_added');
 
-// för att ha en slutlig totalsumma utanför funktionen
+// för att ha en slutlig totalsumma utanför funktionen, typ ifall den behöver kommas åt utanför själva "print-funktitonen"
 let final_order_sum = 0;
 
 function update_and_print_cart() {
+
 	// vi vill bara ha de produkter i vår array som har en amount som är större än 0
-	const purschased_products = donut_products.filter((product) => product.amount > 0);
+	const purchased_products = donut_products.filter((product) => product.amount > 0);
 	let total_sum = 0;
+	let each_product_price = 0;
+
 	// ifall användaren tar bort alla produkter i varukorgen vill vi skriva att den är tom
-	if (purschased_products.length === 0) {
+	if (purchased_products.length === 0) {
 		shopping_cart_products_overview.innerHTML = `
-		<p>
-			Din varukorg är tom
-		</p>
-		`;
+		<p>Din varukorg är tom</p>`;
 		final_order_sum = 0;
+
 		// TODO: lägg till att "Till kassan"-knappen försvinner här, och visas när något läggs till i listan (desktop verison bara tror jag);
 		return;
 	}
+
 	// rensa föregående text
 	shopping_cart_products_overview.innerHTML = '';
+
 	// för varje produkt som matchar vårt filter (amount > 0) så skriver vi ut en <p> med namn, antal och totalt pris.
-	purschased_products.forEach((product) => {
-		total_sum += product.amount * product.price;
+	purchased_products.forEach((product) => {
+		each_product_price = Math.round(product.price * price_increase);
+		let discount_msg = '';
+
+		// om vi köper 10 eller fler av samma, 10% rabatt på endast den produkten
+		if (product.amount  >= 10) {
+			each_product_price = Math.round((product.price * price_increase) * bulk_purchase_discount);
+			discount_msg = `Bulkköps-rabatt: -10% på denna produkt`;
+		}
+
+		// lägger till priset för varje produkt till totalsumman
+		total_sum += product.amount * each_product_price;
+
+		// skriver ut produkterna i varukorgen, med pris och antal
 		shopping_cart_products_overview.innerHTML += `
-		<p class="shopping_cart_products">
-			${product.name}: ${product.amount}st - ${product.amount * product.price}kr
-		</p>
+		<div class="shopping_cart_item">
+			<p class="shopping_cart_products">${product.name}: ${product.amount}st - ${product.amount * each_product_price}kr</p>
+			<p class="discount_msg">${discount_msg}</p>
+		</div>
 		`;
 	});
 	final_order_sum = total_sum;
-	//för att printa ut totalsumman av alla produkter i varukorgen
-	shopping_cart_products_overview.innerHTML += `
-	<p class="total_sum"> 
-		Totalsumma: ${total_sum}kr
-	</p>
-	`;
+
 	// Om det är måndag morgon, rabatt
 	if (today.getDay() === 1 && today.getHours() < 10) {
 		final_order_sum = Math.round(total_sum * 0.9);
 		shopping_cart_products_overview.innerHTML += `
-		<p class="discount">
-			Måndag morgon-rabatt, 10% dras av från din beställning: - ${Math.round(total_sum * 0.1)}kr
-		</p>
-		<p class="discount_total_sum">
-			Ny totalsumma: ${final_order_sum}kr
-		</p>
-		`;
+		<p class="discount">Måndag morgon-rabatt, 10% dras av från din beställning: - ${Math.round(total_sum * 0.1)}kr</p>`;
 	}
+
+	//för att printa ut totalsumman av alla produkter i varukorgen
+	shopping_cart_products_overview.innerHTML += `
+	<p class="total_sum">Totalsumma: ${final_order_sum}kr</p>`;
 }
