@@ -306,6 +306,8 @@ function update_and_print_cart() {
 		<p class="discount">Måndag morgon-rabatt, 10% dras av från din beställning: - ${Math.round(total_sum * 0.1)}kr</p>`;
 	}
 
+	// TODO: Lägg till print och funktionalitet av fraktkostnader
+
 	//för att printa ut totalsumman av alla produkter i varukorgen
 	shopping_cart_products_overview.innerHTML += `
 	<p class="total_sum">Totalsumma: ${final_order_sum}kr</p>`;
