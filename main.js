@@ -4,7 +4,6 @@
 
 //Array of products (donuts)
 const donut_products = [
-	//TODO: Lägg till bilder och fixa alt-texter
 	{
 		id: 'klassisk_sockermunk',
 		name: 'Klassisk Sockermunk',
@@ -235,9 +234,7 @@ function decrease_product_count(e) {
 // --------- Shopping Cart section -------------
 // ---------------------------------------------
 
-const shopping_cart_products_overview = document.querySelector(
-	'#cart_products_added'
-);
+const shopping_cart_products_overview = document.querySelector('#cart_products_added');
 
 function update_and_print_cart() {
 	// vi vill bara ha de produkter i vår array som har en amount som är större än 0
