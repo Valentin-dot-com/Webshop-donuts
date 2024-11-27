@@ -216,7 +216,9 @@ function print_products_list() {
 		button.addEventListener('click', decrease_product_count);
 	});
 }
- 
+
+//-------------------------------------------------------------------------------
+
 // JENNI: Är det korrekt att sortera såhär? Behöver jag behålla origanl-arrayen med produkter?
 // funktionen verkar fungera men jag är osäker på om det är korrekt sätt 
 function sort_by_name() {
