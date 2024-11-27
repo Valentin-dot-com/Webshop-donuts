@@ -243,12 +243,25 @@ function sort_by_highest_price() {
 	print_products_list();
 }
 
+// TODO: skriv ut kategorier så du kan se om denna funkar
 function sort_by_category() {
-	
+	donut_products.sort((product1, product2) => {
+		if (product1.category < product2.category) {
+			return -1;
+		}
+		if (product1.category > product2.category) {
+			return 1;
+		}
+		return 0;
+	});
+	console.table(donut_products);
+
+	print_products_list();
 }
 
 function sort_by_rating() {
-	console.log('Sort by rating clicked');
+	donut_products.sort((product1, product2) => product2.rating - product1.rating);
+	print_products_list();
 }
 
 //-------------------------------------------------------------------------------
