@@ -255,8 +255,10 @@ const shopping_cart_products_overview = document.querySelector('#cart_products_a
 // för att ha en slutlig totalsumma utanför funktionen, typ ifall den behöver kommas åt utanför själva "print-funktitonen"
 let final_order_sum = 0;
 
-function update_and_print_cart() {
+// samma med denna som ovan, skulle kunna vara lokal variabel antar jag men sätter utanför pga samma som ovan
+let delivery_fee = 0;
 
+function update_and_print_cart() {
 	// vi vill bara ha de produkter i vår array som har en amount som är större än 0
 	const purchased_products = donut_products.filter((product) => product.amount > 0);
 	let total_sum = 0;
@@ -267,6 +269,7 @@ function update_and_print_cart() {
 		shopping_cart_products_overview.innerHTML = `
 		<p>Din varukorg är tom</p>`;
 		final_order_sum = 0;
+		delivery_fee = 0;
 
 		// TODO: lägg till att "Till kassan"-knappen försvinner här, och visas när något läggs till i listan (desktop verison bara tror jag);
 		return;
@@ -281,8 +284,8 @@ function update_and_print_cart() {
 		let discount_msg = '';
 
 		// om vi köper 10 eller fler av samma, 10% rabatt på endast den produkten
-		if (product.amount  >= 10) {
-			each_product_price = Math.round((product.price * price_increase) * bulk_purchase_discount);
+		if (product.amount >= 10) {
+			each_product_price = Math.round(product.price * price_increase * bulk_purchase_discount);
 			discount_msg = `Bulkköps-rabatt: -10% på denna produkt`;
 		}
 
@@ -306,9 +309,18 @@ function update_and_print_cart() {
 		<p class="discount">Måndag morgon-rabatt, 10% dras av från din beställning: - ${Math.round(total_sum * 0.1)}kr</p>`;
 	}
 
-	// TODO: Lägg till print och funktionalitet av fraktkostnader
+	const total_amount_of_donuts = donut_products.reduce((product1, product2) => product1 + product2.amount, 0);
+	console.log(total_amount_of_donuts);
+
+	if (total_amount_of_donuts >= 15) {
+		delivery_fee = 0;
+	} else {
+		delivery_fee = 25 + Math.round(final_order_sum * 0.1);
+	}
+	shopping_cart_products_overview.innerHTML += `
+	<p class="delivery_fee">Frakt: ${delivery_fee}</p>`;
 
 	//för att printa ut totalsumman av alla produkter i varukorgen
 	shopping_cart_products_overview.innerHTML += `
-	<p class="total_sum">Totalsumma: ${final_order_sum}kr</p>`;
+	<p class="total_sum">Totalsumma: ${final_order_sum + delivery_fee}kr</p>`;
 }
