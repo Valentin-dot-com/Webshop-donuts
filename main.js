@@ -150,6 +150,21 @@ const today = new Date();
 
 const product_list_div = document.querySelector('#products_list');
 
+const sort_by_name_btn = document.querySelector('#sort_by_name');
+sort_by_name_btn.addEventListener('click', sort_by_name);
+
+const sort_by_lowest_price_btn = document.querySelector('#sort_by_price_cheap');
+sort_by_lowest_price_btn.addEventListener('click', sort_by_lowest_price);
+
+const sort_by_highest_price_btn = document.querySelector('#sort_by_price_expensive');
+sort_by_highest_price_btn.addEventListener('click', sort_by_highest_price);
+
+const sort_by_category_btn = document.querySelector('#sort_by_category');
+sort_by_category_btn.addEventListener('click', sort_by_category);
+
+const sort_by_rating_btn = document.querySelector('#sort_by_rating');
+sort_by_rating_btn.addEventListener('click', sort_by_rating);
+
 const weekend_prices = donut_products.map((product) => Math.round(product.price * 1.15));
 
 const is_friday = today.getDay() === 5;
@@ -200,6 +215,40 @@ function print_products_list() {
 	decrease_buttons.forEach((button) => {
 		button.addEventListener('click', decrease_product_count);
 	});
+}
+ 
+// JENNI: Är det korrekt att sortera såhär? Behöver jag behålla origanl-arrayen med produkter?
+// funktionen verkar fungera men jag är osäker på om det är korrekt sätt 
+function sort_by_name() {
+	donut_products.sort((product1, product2) => {
+		if (product1.name < product2.name) {
+			return -1;
+		}
+		if (product1.name > product2.name) {
+			return 1;
+		}
+		return 0;
+	});
+
+	print_products_list();
+}
+
+function sort_by_lowest_price() {
+	donut_products.sort((product1, product2) => product1.price - product2.price);
+	print_products_list();
+}
+
+function sort_by_highest_price() {
+	donut_products.sort((product1, product2) => product2.price - product1.price);
+	print_products_list();
+}
+
+function sort_by_category() {
+	
+}
+
+function sort_by_rating() {
+	console.log('Sort by rating clicked');
 }
 
 //-------------------------------------------------------------------------------
@@ -297,8 +346,7 @@ function update_and_print_cart() {
 		<div class="shopping_cart_item">
 			<p class="shopping_cart_products">${product.name}: ${product.amount}st - ${product.amount * each_product_price}kr</p>
 			<p class="discount_msg">${discount_msg}</p>
-		</div>
-		`;
+		</div>`;
 	});
 	final_order_sum = total_sum;
 
@@ -309,8 +357,8 @@ function update_and_print_cart() {
 		<p class="discount">Måndag morgon-rabatt, 10% dras av från din beställning: - ${Math.round(total_sum * 0.1)}kr</p>`;
 	}
 
+	// funktionalitet för fraktkostnader
 	const total_amount_of_donuts = donut_products.reduce((product1, product2) => product1 + product2.amount, 0);
-	console.log(total_amount_of_donuts);
 
 	if (total_amount_of_donuts >= 15) {
 		delivery_fee = 0;

@@ -2,171 +2,181 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gottfrids Munkshop</title>
-  <link rel="stylesheet" href="css/style.css" type="text/css">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gottfrids Munkshop</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
 </head>
 
 <body>
-  <header>
-    <section class="nav_section">
-      <h1>Gottfrids Munkshop</h1>
-      <div class="shopping_cart">
-        <p class="cart_cost" id="cart_cost_sum"></p>
-        <button id="cart_btn" class="cart_button">
-          <span class="material-symbols-outlined">
-            shopping_cart
-          </span>
-        </button>
-      </div>
-      <button id="hamburger_menu_btn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav class="nav_menu">
-        <menu class="menu_list">
-          <li><a href="#product_page_section">Munkar</a></li>
-          <li><a href="#shopping_cart_aside">Varukorg</a></li>
-          <li><a href="#order_form_section">Gå till kassan</a></li>
-        </menu>
-      </nav>
-    </section>
-    <section class="hero_section">
-      <h2>Beställ nybakade munkar, direkt till din dörr</h2>
-      <figure>
-        <img src="assets/images/donuts_closup.webp">
-        <figcaption>Upptäck vårt utbud av nybakade munkar med olika smaker</figcaption>
-      </figure>
-    </section>
-  </header>
-  <main>
-    <section id="product_page_section" class="product_page">
-      <h2>Munkar</h2>
-      <div id="products_list">
-        <!-- add items from JavaScript -->
-      </div>
-    </section>
-    <aside id="shopping_cart_aside" class="shopping_cart_page">
-      <h2>Varukorg</h2>
-      <div class="cart_products" id="cart_products_added">
-        <!-- get and add from JavaScript -->
-         <p>Din varukorg är tom</p>
-      </div>
-      <div id="total_cart_cost">
-        <!-- add in JavaScript -->
-      </div>
-      <button type="button" id="to_checkout_btn">Gå till kassan</button>
-    </aside>
-    <section id="order_form_section" class="order_form_page">
-      <h2>Din information:</h2>
-      <form>
-        <!-- Användarinformation -->
-        <label>
-          <!-- TODO: Lägg validering i JS -->
-          <span>Förnamn</span>
-          <input id="first_name_input" type="text" required>
-        </label>
-        <label>
-          <span>Efternamn</span>
-          <input id="last_name_input" type="text" required>
-        </label>
-        <label>
-          <span>Adress</span>
-          <input id="address_input" type="text" required>
-        </label>
-        <label>
-          <span>Postnummer</span>
-          <input id="postal_code_input" type="text" required>
-        </label>
-        <label>
-          <span>Ort</span>
-          <input id="city_input" type="text" required>
-        </label>
-        <label>
-          <span>Ev. Portkod</span>
-          <input id="gatecode_input" type="number">
-        </label>
-        <label>
-          <span>Telefonnummer</span>
-          <input id="phonenumber_input" type="number" required>
-        </label>
-        <label>
-          <span>Email</span>
-          <input id="email_input" type="email" required>
-        </label>
+	<header>
+		<section class="nav_section">
+			<h1>Gottfrids Munkshop</h1>
+			<div class="shopping_cart">
+				<p class="cart_cost" id="cart_cost_sum"></p>
+				<button id="cart_btn" class="cart_button">
+					<span class="material-symbols-outlined">
+						shopping_cart
+					</span>
+				</button>
+			</div>
+			<button id="hamburger_menu_btn">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<nav class="nav_menu">
+				<menu class="menu_list">
+					<li><a href="#product_page_section">Munkar</a></li>
+					<li><a href="#shopping_cart_aside">Varukorg</a></li>
+					<li><a href="#order_form_section">Gå till kassan</a></li>
+				</menu>
+			</nav>
+		</section>
+		<section class="hero_section">
+			<h2>Beställ nybakade munkar, direkt till din dörr</h2>
+			<figure>
+				<img src="assets/images/donuts_closup.webp">
+				<figcaption>Upptäck vårt utbud av nybakade munkar med olika smaker</figcaption>
+			</figure>
+		</section>
+	</header>
+	<main>
+		<section class="sort_products_section">
+			<h2>Sortera munkar:</h2>
+			<div class="sorting_btns">
+				<input id="sort_by_name" type="button" value="Namn">
+				<input id="sort_by_price_cheap" type="button" value="Pris: Billigsast överst">
+				<input id="sort_by_price_expensive" type="button" value="Pris: Dyrast överst">
+				<input id="sort_by_category" type="button" value="Kategori">
+				<input id="sort_by_rating" type="button" value="Rating">
+			</div>
+		</section>
+		<section id="product_page_section" class="product_page">
+			<h2>Munkar</h2>
+			<div id="products_list">
+				<!-- add items from JavaScript -->
+			</div>
+		</section>
+		<aside id="shopping_cart_aside" class="shopping_cart_page">
+			<h2>Varukorg</h2>
+			<div class="cart_products" id="cart_products_added">
+				<!-- get and add from JavaScript -->
+				<p>Din varukorg är tom</p>
+			</div>
+			<div id="total_cart_cost">
+				<!-- add in JavaScript -->
+			</div>
+			<button type="button" id="to_checkout_btn">Gå till kassan</button>
+		</aside>
+		<section id="order_form_section" class="order_form_page">
+			<h2>Din information:</h2>
+			<form>
+				<!-- Användarinformation -->
+				<label>
+					<!-- TODO: Lägg validering i JS -->
+					<span>Förnamn</span>
+					<input id="first_name_input" type="text" required>
+				</label>
+				<label>
+					<span>Efternamn</span>
+					<input id="last_name_input" type="text" required>
+				</label>
+				<label>
+					<span>Adress</span>
+					<input id="address_input" type="text" required>
+				</label>
+				<label>
+					<span>Postnummer</span>
+					<input id="postal_code_input" type="text" required>
+				</label>
+				<label>
+					<span>Ort</span>
+					<input id="city_input" type="text" required>
+				</label>
+				<label>
+					<span>Ev. Portkod</span>
+					<input id="gatecode_input" type="number">
+				</label>
+				<label>
+					<span>Telefonnummer</span>
+					<input id="phonenumber_input" type="number" required>
+				</label>
+				<label>
+					<span>Email</span>
+					<input id="email_input" type="email" required>
+				</label>
 
-        <!-- Välja betalsätt -->
-        <p>Välj betalsätt</p>
-        <div class="payment_choice_btn">
-          <button id="card_payment_btn" type="button">Kort</button>
-          <button id="invoice_payment_btn" type="button">Faktura</button>
-        </div>
+				<!-- Välja betalsätt -->
+				<p>Välj betalsätt</p>
+				<div class="payment_choice_btn">
+					<button id="card_payment_btn" type="button">Kort</button>
+					<button id="invoice_payment_btn" type="button">Faktura</button>
+				</div>
 
-        <!-- Om kort: -->
-        <div id="card_payment_fields">
-          <label>
-            <span>Kortnummer</span>
-            <input id="cardnumber_input" type="number">
-          </label>
-          <label>
-            <span>Datum/År</span>
-            <input id="date_year_input" type="number"> <!-- osäker om denna ska vara "number" -->
-          </label>
-          <label>
-            <span>CVC</span>
-            <input id="cvc_input" type="number">
-          </label>
-        </div>
+				<!-- Om kort: -->
+				<div id="card_payment_fields">
+					<label>
+						<span>Kortnummer</span>
+						<input id="cardnumber_input" type="number">
+					</label>
+					<label>
+						<span>Datum/År</span>
+						<input id="date_year_input" type="number"> <!-- osäker om denna ska vara "number" -->
+					</label>
+					<label>
+						<span>CVC</span>
+						<input id="cvc_input" type="number">
+					</label>
+				</div>
 
-        <!-- Om Faktura: -->
-        <div id="invoice_payment_field">
-          <label>
-            <span>Personnnummer</span>
-            <input id="social_security_number_input" type="number">
-          </label>
-        </div>
+				<!-- Om Faktura: -->
+				<div id="invoice_payment_field">
+					<label>
+						<span>Personnnummer</span>
+						<input id="social_security_number_input" type="number">
+					</label>
+				</div>
 
-        <label>
-          <span>Jag godkänner hantering av mina personuppgifter</span>
-          <input id="personal_data_checkbox" type="checkbox">
-        </label>
-        <label>
-          <span>Jag vill skriva upp mig på ert nyhetsbrev</span>
-          <input id="newsletter_checkbox" type="checkbox">
-        </label>
+				<label>
+					<span>Jag godkänner hantering av mina personuppgifter</span>
+					<input id="personal_data_checkbox" type="checkbox">
+				</label>
+				<label>
+					<span>Jag vill skriva upp mig på ert nyhetsbrev</span>
+					<input id="newsletter_checkbox" type="checkbox">
+				</label>
 
-        <input class="reset_form" id="reset_btn" type="reset" value="Rensa och återställ"
-          aria-label="rensa och återställ">
-        <input class="submit_form" id="submit_btn" type="submit" value="Skicka beställning"
-          aria-label="skicka beställning">
-      </form>
-    </section>
+				<input class="reset_form" id="reset_btn" type="reset" value="Rensa och återställ"
+					aria-label="rensa och återställ">
+				<input class="submit_form" id="submit_btn" type="submit" value="Skicka beställning"
+					aria-label="skicka beställning">
+			</form>
+		</section>
 
-  </main>
-  <footer>
-    <!-- Öppettider på låtsas -->
-    <section>
-      <h3>Öppettider</h3>
-      <ul>
-        <li>Måndag-fredag: 00:00-24:00</li>
-        <li>Lördag-Söndag: 00-00-24:00</li>
-      </ul>
-    </section>
-    <section>
-      <h3>Kontaktinfo</h3>
-      <adress>
-        Telefonnummer: <a href="tel: +46123456789">+4671 234 56 78</a><br>
-        Email: <a href="mailto: info@gottfridsmunkar.se">info@gottfridsmunkar.se</a><br>
-        Adress: Munkvägen 10, 123 45, Snaskköping
-      </adress>
-    </section>
-  </footer>
+	</main>
+	<footer>
+		<!-- Öppettider på låtsas -->
+		<section>
+			<h3>Öppettider</h3>
+			<ul>
+				<li>Måndag-fredag: 00:00-24:00</li>
+				<li>Lördag-Söndag: 00-00-24:00</li>
+			</ul>
+		</section>
+		<section>
+			<h3>Kontaktinfo</h3>
+			<adress>
+				Telefonnummer: <a href="tel: +46123456789">+4671 234 56 78</a><br>
+				Email: <a href="mailto: info@gottfridsmunkar.se">info@gottfridsmunkar.se</a><br>
+				Adress: Munkvägen 10, 123 45, Snaskköping
+			</adress>
+		</section>
+	</footer>
 
-  <script src="main.js"></script>
+	<script src="main.js"></script>
 </body>
 
 </html>
