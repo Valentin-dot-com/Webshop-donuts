@@ -119,6 +119,8 @@
             }
 			p:nth-of-type(1) {
 				font-size: clamp(1.5rem, 4vw, 8rem); // TODO: kolla vidare på denna
+				flex-basis: 20%;
+				text-align: right;
 			}
             p:nth-of-type(2) {
                 flex-basis: 100%;
