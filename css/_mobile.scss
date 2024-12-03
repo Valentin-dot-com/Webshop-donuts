@@ -60,6 +60,9 @@
 		margin: 0;
 		position: relative;
 		img {
+			min-width: 100%;
+			height: auto;
+			object-fit: cover;
 			filter: blur(0.15rem);
 			filter: brightness(0.6);
 		}
@@ -88,12 +91,29 @@
             border-bottom: 1px solid black;
             img {
                 flex-basis: 100%;
+				max-width: 100%;
+				height: auto;
+				object-fit: cover;
             }
             h3 {
                 flex-basis: 80%;
             }
             p:nth-of-type(2) {
                 flex-basis: 100%;
+            }
+			.ratings {
+                flex-basis: 100%;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				p {
+					font-size: 1.5rem;
+				}
+				img {
+					object-fit: contain;
+					max-height: 1.5rem;
+					max-width: 1.5rem;
+				}
             }
             .count_buttons {
                 flex-basis: 100%;

@@ -219,8 +219,8 @@ function print_products_list() {
 				<p>${Math.round(product.price * price_increase)} kr</p>
 				<p>Kategori: ${product.category}
 				<div class="ratings">
-				<p>Rating: </p>
-				${get_rating_stars(product.rating)}
+					<p>Betyg: </p>
+					${get_rating_stars(product.rating)}
 				</div>
 				<div class="count_buttons">
 					<button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
