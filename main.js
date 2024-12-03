@@ -291,7 +291,6 @@ function sort_by_highest_price() {
 	print_products_list();
 }
 
-// TODO: skriv ut kategorier så du kan se om denna funkar
 function sort_by_category() {
 	donut_products.sort((product1, product2) => {
 		if (product1.category < product2.category) {
