@@ -212,9 +212,7 @@ function print_products_list() {
 	donut_products.forEach((product) => {
 		product_list_div.innerHTML += `
 			<article class="product">
-				<img src="${product.img.url}" width="${product.img.width}" height="${product.img.height}" loading="lazy" alt="${
-			product.img.alt
-		}">
+				<img class="product_img" src="${product.img.url}" width="${product.img.width}" height="${product.img.height}" loading="lazy" alt="${product.img.alt}">
 				<h3>${product.name}</h3>
 				<p>${Math.round(product.price * price_increase)} kr</p>
 				<p>Kategori: ${product.category}

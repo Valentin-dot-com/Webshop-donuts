@@ -88,16 +88,22 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+			align-items: baseline;
             border-bottom: 1px solid black;
-            img {
+            .product_img {
                 flex-basis: 100%;
 				max-width: 100%;
 				height: auto;
 				object-fit: cover;
+				margin-bottom: 1rem;
             }
             h3 {
+				font-size: clamp(1.5rem, 4vw, 8rem); // TODO: kolla vidare på denna
                 flex-basis: 80%;
             }
+			p:nth-of-type(1) {
+				font-size: clamp(1.5rem, 4vw, 8rem); // TODO: kolla vidare på denna
+			}
             p:nth-of-type(2) {
                 flex-basis: 100%;
             }
