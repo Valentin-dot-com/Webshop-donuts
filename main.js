@@ -195,6 +195,7 @@ function print_products_list() {
 				<img src="${product.img.url}" alt="${product.img.alt}">
 				<h3>${product.name}</h3>
 				<p>${Math.round(product.price * price_increase)} kr</p>
+				<p>Kategori: ${product.category}
 				<p>Rating: ${product.rating}</p>
 				<div class="count_buttons">
 					<button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
@@ -219,8 +220,6 @@ function print_products_list() {
 
 //-------------------------------------------------------------------------------
 
-// JENNI: Är det korrekt att sortera såhär? Behöver jag behålla origanl-arrayen med produkter?
-// funktionen verkar fungera men jag är osäker på om det är korrekt sätt 
 function sort_by_name() {
 	donut_products.sort((product1, product2) => {
 		if (product1.name < product2.name) {
