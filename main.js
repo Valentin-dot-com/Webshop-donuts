@@ -146,6 +146,26 @@ const donut_products = [
 	},
 ];
 
+const icon_full_star = {
+	id: 'full_star',
+	img: {
+		url: 'assets/icons/star_solid.svg',
+		width: 576,
+		height: 512,
+		alt: 'en ikon som representerar en ifylld stjärna',
+	},
+};
+
+const icon_half_star = {
+	id: 'half_star',
+	img: {
+		url: 'assets/icons/star_half_stroke_solid.svg',
+		width: 576,
+		height: 512,
+		alt: 'en ikon som representerar en halft ifylld stjärna',
+	},
+};
+
 const today = new Date();
 
 const product_list_div = document.querySelector('#products_list');
@@ -192,11 +212,16 @@ function print_products_list() {
 	donut_products.forEach((product) => {
 		product_list_div.innerHTML += `
 			<article class="product">
-				<img src="${product.img.url}" alt="${product.img.alt}">
+				<img src="${product.img.url}" width="${product.img.width}" height="${product.img.height}" loading="lazy" alt="${
+			product.img.alt
+		}">
 				<h3>${product.name}</h3>
 				<p>${Math.round(product.price * price_increase)} kr</p>
 				<p>Kategori: ${product.category}
-				<p>Rating: ${product.rating}</p>
+				<div class="ratings">
+				<p>Rating: </p>
+				${get_rating_stars(product.rating)}
+				</div>
 				<div class="count_buttons">
 					<button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
 					<span>${product.amount}</span>
@@ -216,6 +241,28 @@ function print_products_list() {
 	decrease_buttons.forEach((button) => {
 		button.addEventListener('click', decrease_product_count);
 	});
+}
+
+//-------------------------------------------------------------------------------
+
+function get_rating_stars(rating) {
+	// för att se ifall det finns decimal
+	const needs_half_star = rating % 1 === 0.5;
+
+	let html = '';
+
+	if (needs_half_star) {
+		for (let i = 1; i < rating; i++) {
+			html += `<img src="${icon_full_star.img.url}" class="${icon_full_star.id}" width="${icon_full_star.img.width}" height="${icon_full_star.img.height}" alt="${icon_full_star.img.alt}">`;
+		}
+		html += `<img src="${icon_half_star.img.url}" class="${icon_half_star.id}" width="${icon_half_star.img.width}" height="${icon_half_star.img.height}" alt="${icon_half_star.img.alt}">`;
+	} else {
+		for (let i = 0; i < rating; i++) {
+			html += `<img src="${icon_full_star.img.url}" class="${icon_full_star.id}" width="${icon_full_star.img.width}" height="${icon_full_star.img.height}" alt="${icon_full_star.img.alt}">`;
+		}
+	}
+
+	return html;
 }
 
 //-------------------------------------------------------------------------------
