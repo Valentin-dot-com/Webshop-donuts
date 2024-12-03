@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Gottfrids Munkshop</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
 </head>
 
 <body>
@@ -65,10 +66,9 @@
 				<!-- get and add from JavaScript -->
 				<p>Din varukorg är tom</p>
 			</div>
-			<div id="total_cart_cost">
-				<!-- add in JavaScript -->
+			<div class="checkout_btn_wrapper"> <!-- För att kunna centrare knappen enkelt med flex -->
+				<button type="button" id="to_checkout_btn">Gå till kassan</button>
 			</div>
-			<button type="button" id="to_checkout_btn">Gå till kassan</button>
 		</aside>
 		<section id="order_form_section" class="order_form_page">
 			<h2>Din information:</h2>

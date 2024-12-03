@@ -184,7 +184,41 @@
 // ------ Main -> shopping_cart ----------
 // ---------------------------------------
 
-
+.shopping_cart_page {
+	padding: 1rem;
+	h2 {
+		font-size: clamp(1.5rem, 4vw, 8rem);
+	}
+	.cart_products {
+		display: flex;
+		flex-direction: column;
+		.shopping_cart_item {
+			margin-top: 1rem;
+			border-bottom: 1px solid black; // TODO: ta bort/ändra
+			.shopping_cart_products {
+				display: flex;
+				justify-content: space-between;
+			}
+			.discount_msg {
+				opacity: 50%;
+			}
+		}
+		.delivery_fee {
+			display: flex;
+			justify-content: space-between;
+		}
+		.total_sum {
+			font-size: 1.2rem;
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+	.checkout_btn_wrapper {
+		margin-top: 1rem;
+		display: flex;
+		justify-content: center;
+	}
+}
 
 // ---------------------------------------
 // ----------- Main -> form --------------

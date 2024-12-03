@@ -402,7 +402,10 @@ function update_and_print_cart() {
 		// skriver ut produkterna i varukorgen, med pris och antal
 		shopping_cart_products_overview.innerHTML += `
 		<div class="shopping_cart_item">
-			<p class="shopping_cart_products">${product.name}: ${product.amount}st - ${product.amount * each_product_price}kr</p>
+			<p class="shopping_cart_products">
+				<span>${product.name}: </span>
+				<span>${product.amount}st - ${product.amount * each_product_price}kr</span>
+			</p>
 			<p class="discount_msg">${discount_msg}</p>
 		</div>`;
 	});
@@ -424,9 +427,15 @@ function update_and_print_cart() {
 		delivery_fee = 25 + Math.round(final_order_sum * 0.1);
 	}
 	shopping_cart_products_overview.innerHTML += `
-	<p class="delivery_fee">Frakt: ${delivery_fee}</p>`;
+	<p class="delivery_fee">
+		<span>Frakt: </span>
+		<span>${delivery_fee}</span>
+	</p>`;
 
 	//för att printa ut totalsumman av alla produkter i varukorgen
 	shopping_cart_products_overview.innerHTML += `
-	<p class="total_sum">Totalsumma: ${final_order_sum + delivery_fee}kr</p>`;
+	<p class="total_sum">
+		<span>Totalsumma: </span>
+		<span>${final_order_sum + delivery_fee}kr</span>
+	</p>`;
 }
