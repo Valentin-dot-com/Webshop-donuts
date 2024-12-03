@@ -79,6 +79,22 @@
 // -------------- <main> -----------------
 // ---------------------------------------
 
+.sort_products_section {
+	padding: 1rem;
+	.sorting_btns {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		input {
+			border: none;
+			background-color: bisque;
+			padding: 0.5rem;
+			border-radius: 3rem;
+			cursor: pointer; // TODO: fixa färg osv
+		}
+	}
+}
+
 .product_page {
 	padding: 1rem;
 	div {
@@ -106,6 +122,7 @@
 			}
             p:nth-of-type(2) {
                 flex-basis: 100%;
+				font-size: 1.1rem;
             }
 			.ratings {
                 flex-basis: 100%;
