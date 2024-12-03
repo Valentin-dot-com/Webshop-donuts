@@ -224,7 +224,7 @@ function print_products_list() {
 				</div>
 				<div class="count_buttons">
 					<button class="decrease_btns" id="decrease_${product.id}"><span class="material-symbols-outlined">remove</span></button>
-					<span>${product.amount}</span>
+					<span class="product_amount">${product.amount}</span>
 					<button class="increase_btns" id="increase_${product.id}"><span class="material-symbols-outlined">add</span></button>
 				</div>
 			</article>

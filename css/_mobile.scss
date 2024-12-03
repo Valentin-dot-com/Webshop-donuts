@@ -121,19 +121,24 @@
                 justify-content: center;
                 gap: 1rem;
                 margin-bottom: 2rem;
-                input {
+				margin-top: 2rem;
+                .product_amount {
                     width: 10%;
+					font-size: 2rem;
                     aspect-ratio: 1 / 1;
-                    text-align: center;
-                    vertical-align: center;
+					display: flex;
+					align-items: center;
+					justify-content: center;
                 }
                 button {
                     position: relative;
                     padding: 0;
-                    width: 10%;
+                    min-width: 15%;
+					aspect-ratio: 1 / 1;
                     font-size: 2rem;
                     vertical-align: center;
                     text-align: center;
+					border-radius: 50%;
                     cursor: pointer;
                     span {
                         font-size: clamp(2rem, 2vw, 6rem);
