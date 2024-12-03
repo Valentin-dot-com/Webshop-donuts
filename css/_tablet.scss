@@ -3,10 +3,14 @@
 // ---------------------------------------
 
 main {
-    background-color: aqua; // TODO: ta bort 
+    background-color: aqua; // TODO: ta bort
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .product_page {
+    flex-basis: 100vw;
     div {
         display: flex;
         justify-content: space-around;
@@ -39,7 +43,19 @@ main {
 // ---------------------------------------
 
 .shopping_cart_page {
-    grid-column: span 1;
-    padding: 0;
-    padding-right: 1rem;
+    order: 2;
+    flex-basis: 50vw;
+    border-left: 1px solid black;
+    button {
+        display: none;
+    }
+}
+
+// ---------------------------------------
+// ----------- Main -> form --------------
+// ---------------------------------------
+
+.order_form_page {
+    order: 1;
+    flex-basis: 50vw;
 }

@@ -97,6 +97,7 @@
 
 .product_page {
 	padding: 1rem;
+	border-bottom: 2px solid black;
 	div {
         margin-top: 1rem;
         .product {
@@ -186,8 +187,11 @@
 
 .shopping_cart_page {
 	padding: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 	h2 {
-		font-size: clamp(1.5rem, 4vw, 8rem);
+		font-size: clamp(1.5rem, 4vw, 3rem);
+		margin-bottom: 1rem;
 	}
 	.cart_products {
 		display: flex;
@@ -226,6 +230,12 @@
 
 .order_form_page {
 	padding: 1rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	h2 {
+		font-size: clamp(1.5rem, 4vw, 3rem);
+		margin-bottom: 1rem;
+	}
 	form {
 		display: flex;
 		flex-wrap: wrap;
@@ -261,5 +271,11 @@
 }
 
 // ---------------------------------------
-// -------------- H -----------------
+// -------------- Footer -----------------
 // ---------------------------------------
+
+footer {
+	display: flex;
+	justify-content: space-around;
+	margin: 1rem;
+}
