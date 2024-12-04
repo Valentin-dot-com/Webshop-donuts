@@ -6,7 +6,7 @@ main {
     background-color: aqua; // TODO: ta bort
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .product_page {
@@ -17,7 +17,7 @@ main {
         flex-wrap: wrap;
         gap: 1rem;
         .product {
-            flex-basis: calc(50vw - 2rem);
+            flex-basis: calc(50vw - 3rem);
             background-color: white; // TODO: ändra färger osv
             h3 {
                 font-size: clamp(1rem, 2.3vw, 4rem);
@@ -44,8 +44,7 @@ main {
 
 .shopping_cart_page {
     order: 2;
-    flex-basis: 50vw;
-    border-left: 1px solid black;
+    flex-basis: 48vw;
     button {
         display: none;
     }
@@ -57,5 +56,5 @@ main {
 
 .order_form_page {
     order: 1;
-    flex-basis: 50vw;
+    flex-basis: 48vw;
 }
