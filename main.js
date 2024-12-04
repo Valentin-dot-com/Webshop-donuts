@@ -359,6 +359,8 @@ function decrease_product_count(e) {
 
 const shopping_cart_products_overview = document.querySelector('#cart_products_added');
 
+const go_to_checkout_btn = document.querySelector('#to_checkout_btn');
+
 // för att ha en slutlig totalsumma utanför funktionen, typ ifall den behöver kommas åt utanför själva "print-funktitonen"
 let final_order_sum = 0;
 
@@ -378,12 +380,19 @@ function update_and_print_cart() {
 		final_order_sum = 0;
 		delivery_fee = 0;
 
+		go_to_checkout_btn.classList.remove('visualize');
+		go_to_checkout_btn.classList.add('hidden');
 		// TODO: lägg till att "Till kassan"-knappen försvinner här, och visas när något läggs till i listan (desktop verison bara tror jag);
 		return;
 	}
 
 	// rensa föregående text
 	shopping_cart_products_overview.innerHTML = '';
+
+	go_to_checkout_btn.classList.remove('hidden');
+
+	go_to_checkout_btn.classList.add('visualize');
+
 
 	// för varje produkt som matchar vårt filter (amount > 0) så skriver vi ut en <p> med namn, antal och totalt pris.
 	purchased_products.forEach((product) => {
