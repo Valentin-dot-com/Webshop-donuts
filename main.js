@@ -212,7 +212,9 @@ function print_products_list() {
 	donut_products.forEach((product) => {
 		product_list_div.innerHTML += `
 			<article class="product">
-				<img class="product_img" src="${product.img.url}" width="${product.img.width}" height="${product.img.height}" loading="lazy" alt="${product.img.alt}">
+				<img class="product_img" src="${product.img.url}" width="${product.img.width}" height="${
+			product.img.height
+		}" loading="lazy" alt="${product.img.alt}">
 				<h3>${product.name}</h3>
 				<p>${Math.round(product.price * price_increase)} kr</p>
 				<p>Kategori: ${product.category}
@@ -379,20 +381,11 @@ function update_and_print_cart() {
 		<p>Din varukorg är tom</p>`;
 		final_order_sum = 0;
 		delivery_fee = 0;
-
-		go_to_checkout_btn.classList.remove('visualize');
-		go_to_checkout_btn.classList.add('hidden');
-		// TODO: lägg till att "Till kassan"-knappen försvinner här, och visas när något läggs till i listan (desktop verison bara tror jag);
 		return;
 	}
 
 	// rensa föregående text
 	shopping_cart_products_overview.innerHTML = '';
-
-	go_to_checkout_btn.classList.remove('hidden');
-
-	go_to_checkout_btn.classList.add('visualize');
-
 
 	// för varje produkt som matchar vårt filter (amount > 0) så skriver vi ut en <p> med namn, antal och totalt pris.
 	purchased_products.forEach((product) => {
@@ -441,10 +434,14 @@ function update_and_print_cart() {
 		<span>${delivery_fee}</span>
 	</p>`;
 
-	//för att printa ut totalsumman av alla produkter i varukorgen
+	// för att printa ut totalsumman av alla produkter i varukorgen
+	// knappen inuti en wrapper för att kunna centrera med flex
 	shopping_cart_products_overview.innerHTML += `
 	<p class="total_sum">
 		<span>Totalsumma: </span>
 		<span>${final_order_sum + delivery_fee}kr</span>
-	</p>`;
+	</p>
+	<div class="checkout_btn_wrapper">
+		<button class="visualize" type="button" id="to_checkout_btn">Gå till kassan</button>
+	</div>`;
 }

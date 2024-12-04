@@ -42,6 +42,18 @@ main {
 .shopping_cart_page {
     order: 2;
     flex-basis: 48vw;
+    // align-self: flex-start;
+    // position: relative;
+    .cart_products {
+        background-color: white;
+        border-radius: 3rem;
+        position: sticky;
+        top: 20vh;
+        padding: 1rem;
+        button {
+            display: none; // TODO: sätt display: inline på desktop version
+        }
+    }
 }
 
 // ---------------------------------------
@@ -51,4 +63,9 @@ main {
 .order_form_page {
     order: 1;
     flex-basis: 48vw;
+    input {
+        border: none;
+        border-radius: 3rem;
+        padding: 0.7rem;
+    }
 }
