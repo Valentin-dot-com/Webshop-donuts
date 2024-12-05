@@ -71,36 +71,37 @@
 			<h2>Din information:</h2>
 			<form>
 				<!-- Användarinformation -->
-				<label>
+				<label class="user_input">
 					<!-- TODO: Lägg validering i JS -->
+					 <!-- TODO: sätt name= på inputs -->
 					<span>Förnamn</span>
 					<input id="first_name_input" type="text" required>
 				</label>
-				<label>
+				<label class="user_input">
 					<span>Efternamn</span>
 					<input id="last_name_input" type="text" required>
 				</label>
-				<label>
+				<label class="user_input">
 					<span>Adress</span>
 					<input id="address_input" type="text" required>
 				</label>
-				<label>
+				<label class="user_input">
 					<span>Postnummer</span>
 					<input id="postal_code_input" type="text" required>
 				</label>
-				<label>
+				<label class="user_input">
 					<span>Ort</span>
 					<input id="city_input" type="text" required>
 				</label>
-				<label>
+				<label class="user_input">
 					<span>Ev. Portkod</span>
 					<input id="gatecode_input" type="number">
 				</label>
-				<label>
+				<label class="user_input">
 					<span>Telefonnummer</span>
 					<input id="phonenumber_input" type="tel" required>
 				</label>
-				<label>
+				<label class="user_input">
 					<span>Email</span>
 					<input id="email_input" type="email" required>
 				</label>
@@ -108,41 +109,50 @@
 				<!-- Välja betalsätt -->
 				<p>Välj betalsätt</p>
 				<div class="payment_choice_btn">
-					<button id="card_payment_btn" type="button">Kort</button>
-					<button id="invoice_payment_btn" type="button">Faktura</button>
+					<!-- Kolla om det går att stylea dessa på ett bättre sätt -->
+					<label class="radio_btns">
+						<input type="radio" name="payment_options" value="card" checked>
+						<span>Kort</span>
+						<!-- <button id="card_payment_btn" type="button">Kort</button> -->
+					</label>
+					<label class="radio_btns">
+						<input type="radio" name="payment_options" value="invoice">
+						<span>Faktura</span>
+					<!-- <button id="invoice_payment_btn" type="button">Faktura</button> -->
+					</label>
 				</div>
 
 				<!-- Om kort: -->
 				<div id="card_payment_fields">
-					<label>
+					<label class="user_input">
 						<span>Kortnummer</span>
 						<input id="cardnumber_input" type="number">
 					</label>
-					<label>
+					<label class="user_input">
 						<span>Datum/År</span>
 						<input id="date_year_input" type="number"> <!-- osäker om denna ska vara "number" -->
 					</label>
-					<label>
+					<label class="user_input">
 						<span>CVC</span>
 						<input id="cvc_input" type="number">
 					</label>
 				</div>
 
 				<!-- Om Faktura: -->
-				<div id="invoice_payment_field">
-					<label>
+				<div id="invoice_payment_field" class="hidden">
+					<label class="user_input">
 						<span>Personnnummer</span>
 						<input id="social_security_number_input" type="number">
-					</label>
+					</label class="user_input">
 				</div>
 
-				<label>
+				<label class="checkboxes">
 					<span>Jag godkänner hantering av mina personuppgifter</span>
-					<input id="personal_data_checkbox" type="checkbox">
+					<input id="personal_data_checkbox" type="checkbox" class="checkbox">
 				</label>
-				<label>
+				<label class="checkboxes">
 					<span>Jag vill skriva upp mig på ert nyhetsbrev</span>
-					<input id="newsletter_checkbox" type="checkbox">
+					<input id="newsletter_checkbox" type="checkbox" class="checkbox">
 				</label>
 
 				<input class="reset_form" id="reset_btn" type="reset" value="Rensa och återställ"

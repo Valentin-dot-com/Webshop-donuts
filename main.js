@@ -445,3 +445,28 @@ function update_and_print_cart() {
 		<button class="visualize" type="button" id="to_checkout_btn">Gå till kassan</button>
 	</div>`;
 }
+
+// ---------------------------------------------
+// --------- Shopping Cart section -------------
+// ---------------------------------------------
+
+const payment_option_radio_btns = Array.from(document.querySelectorAll('input[name="payment_options"]'));
+
+const card_payment_fields = document.querySelector('#card_payment_fields');
+
+const invoice_payment_field = document.querySelector('#invoice_payment_field');
+
+payment_option_radio_btns.forEach(radio_btn => {
+	radio_btn.addEventListener('change', switch_payment_method);
+});
+
+
+// togglar vad som ska synas när vi trycker på betalmetoden
+function switch_payment_method() {
+	invoice_payment_field.classList.toggle('hidden');
+	card_payment_fields.classList.toggle('hidden');
+}
+
+//-------------------------------------------------------
+
+
