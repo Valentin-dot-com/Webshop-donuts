@@ -456,17 +456,151 @@ const card_payment_fields = document.querySelector('#card_payment_fields');
 
 const invoice_payment_field = document.querySelector('#invoice_payment_field');
 
-payment_option_radio_btns.forEach(radio_btn => {
+let selected_payment_option = 'card';
+
+payment_option_radio_btns.forEach((radio_btn) => {
 	radio_btn.addEventListener('change', switch_payment_method);
 });
 
-
 // togglar vad som ska synas när vi trycker på betalmetoden
-function switch_payment_method() {
+function switch_payment_method(e) {
 	invoice_payment_field.classList.toggle('hidden');
 	card_payment_fields.classList.toggle('hidden');
+
+	selected_payment_option = e.target.value;
+}
+// ---------------------------------------------
+// ------------ Form validation ----------------
+// ---------------------------------------------
+
+// Jag vet att jag hade kunnat refaktorera dessa, men hade redan gjort dessa när jag såg din lösning..
+// Så jag gör det om jag har tid mot slutet!
+
+const order_btn = document.querySelector('#submit_btn');
+
+const first_name_input = document.querySelector('#first_name_input');
+first_name_input.addEventListener('change', activater_order_button);
+
+const last_name_input = document.querySelector('#last_name_input');
+last_name_input.addEventListener('change', activater_order_button);
+
+const address_input = document.querySelector('#address_input');
+address_input.addEventListener('change', activater_order_button);
+
+const postal_code_input = document.querySelector('#postal_code_input');
+postal_code_input.addEventListener('change', activater_order_button);
+
+const city_input = document.querySelector('#city_input');
+city_input.addEventListener('change', activater_order_button);
+
+const gatecode_input = document.querySelector('#gatecode_input'); // denna kanske är onädig då den inte ska valideras
+gatecode_input.addEventListener('change', activater_order_button);
+
+const phonenumber_input = document.querySelector('#phonenumber_input');
+phonenumber_input.addEventListener('change', activater_order_button);
+
+const email_input = document.querySelector('#email_input');
+email_input.addEventListener('change', activater_order_button);
+
+// RegEx for these input^
+
+const name_regex = new RegExp(/\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/);
+
+const address_regex = new RegExp(/^[A-Za-zåäöÅÄÖéÉèÈÉëËüÜ\- ]+ \d{1,4}[A-Za-z]?$/);
+
+const postal_code_regex = new RegExp(/^\d{3} \d{2}$/);
+
+const city_regex = new RegExp(/^[A-Za-zåäöÅÄÖéÉèÈÉëËüÜ\-'\s]+$/);
+
+const phonenumber_regex = new RegExp(/^(\+46|0)(7[0-9]{1})\d{3}\d{2}\d{2}$/);
+
+const email_regex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+
+// -------------- Invoice -------------------------------
+
+const social_security_number_input = document.querySelector('#social_security_number_input');
+social_security_number_input.addEventListener('change', activater_order_button);
+
+const social_security_number_regex = new RegExp(
+	/^20\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])-\d{4}$|^19\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])-\d{4}$/
+);
+
+function is_social_security_number_valid() {
+	return social_security_number_regex.exec(social_security_number_input.value);
 }
 
-//-------------------------------------------------------
+// ----------------- Card payment ----------------------------
 
+const cardnumber_input = document.querySelector('#cardnumber_input');
+cardnumber_input.addEventListener('change', activater_order_button);
 
+const year_input = document.querySelector('#year_input');
+year_input.addEventListener('change', activater_order_button);
+
+const month_input = document.querySelector('#month_input');
+month_input.addEventListener('change', activater_order_button);
+
+const cvc_input = document.querySelector('#cvc_input');
+cvc_input.addEventListener('change', activater_order_button);
+
+// TODO: fixa regEx på kort om du hinner, var inget krav!!
+// denna kollar så att fältet inte är tomt...
+const credit_card_fields_regex = new RegExp(/^.+$/);
+
+// ------------------ Check form ----------------------------
+
+function activater_order_button() {
+	order_btn.setAttribute('disabled', '');
+	if (name_regex.exec(first_name_input.value) === null) {
+		// TODO: lägg till felmedelanden
+		console.warn('Incorrect first name');
+		return;
+	}
+	if (name_regex.exec(last_name_input.value) === null) {
+		console.warn('Incorrect last name');
+		return;
+	}
+	if (address_regex.exec(address_input.value) === null) {
+		console.warn('Incorrect address');
+		return;
+	}
+	if (postal_code_regex.exec(postal_code_input.value) === null) {
+		console.warn('Incorrect postal code');
+		return;
+	}
+	if (city_regex.exec(city_input.value) === null) {
+		console.warn('Incorrect city');
+		return;
+	}
+	if (phonenumber_regex.exec(phonenumber_input.value) === null) {
+		console.warn('Incorrect phonenumber');
+		return;
+	}
+	if (email_regex.exec(email_input.value) === null) {
+		console.warn('Incorrect email');
+		return;
+	}
+	if (selected_payment_option === 'invoice' && !is_social_security_number_valid()) {
+		console.warn('Incorrect social security number');
+		return;
+	}
+	if (selected_payment_option === 'card') {
+		if (credit_card_fields_regex.exec(cardnumber_input.value) === null) {
+			console.warn('Incorrect cardnumber');
+			return;
+		}
+		if (credit_card_fields_regex.exec(year_input.value) === null) {
+			console.warn('Incorrect year');
+			return;
+		}
+		if (credit_card_fields_regex.exec(month_input.value) === null) {
+			console.warn('Incorrect month');
+			return;
+		}
+		if (credit_card_fields_regex.exec(cvc_input.value) === null) {
+			console.warn('Incorrect cvc');
+			return;
+		}
+	}
+	order_btn.removeAttribute('disabled', '');
+}

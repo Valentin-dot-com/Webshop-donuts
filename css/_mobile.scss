@@ -244,10 +244,22 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
-		.user_input { //ändra till klass istället
+		.user_input {
 			flex-basis: 100%;
 			display: flex;
 			flex-direction: column;
+		}
+		.user_input_year_date {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			.year_date_span {
+				flex-basis: 100%;
+			}
+			.year_date_input {
+				flex-basis: 45%;
+				width: 100%;
+			}
 		}
 		p {
 			flex-basis: 100%;
