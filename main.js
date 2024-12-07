@@ -442,6 +442,7 @@ function update_and_print_cart() {
 	<div class="checkout_btn_wrapper">
 		<button class="visualize" type="button" id="to_checkout_btn">Gå till kassan</button>
 	</div>`;
+	check_if_invoice_available();
 }
 
 // ---------------------------------------------
@@ -454,7 +455,18 @@ const card_payment_fields = document.querySelector('#card_payment_fields');
 
 const invoice_payment_field = document.querySelector('#invoice_payment_field');
 
+const invoice_radio_btn = document.querySelector('#invoice_btn');
+
 let selected_payment_option = 'card';
+
+function check_if_invoice_available() {
+	if (final_order_sum > 800) {
+		invoice_radio_btn.setAttribute('disabled', '');
+	}
+	else { //Går det bra att ha denna som en else eller finns det en bättre lösning?
+		invoice_radio_btn.removeAttribute('disabled');
+	}
+}
 
 payment_option_radio_btns.forEach((radio_btn) => {
 	radio_btn.addEventListener('change', switch_payment_method);
@@ -491,7 +503,7 @@ postal_code_input.addEventListener('change', activater_order_button);
 const city_input = document.querySelector('#city_input');
 city_input.addEventListener('change', activater_order_button);
 
-const gatecode_input = document.querySelector('#gatecode_input'); // denna kanske är onädig då den inte ska valideras
+const gatecode_input = document.querySelector('#gatecode_input'); // denna kanske är onödig då den inte ska valideras
 gatecode_input.addEventListener('change', activater_order_button);
 
 const phonenumber_input = document.querySelector('#phonenumber_input');
