@@ -443,6 +443,7 @@ function update_and_print_cart() {
 		<button class="visualize" type="button" id="to_checkout_btn">Gå till kassan</button>
 	</div>`;
 	check_if_invoice_available();
+	// TODO: lägg till visuell feedback att varukorgen har uppdaterats1
 }
 
 // ---------------------------------------------
