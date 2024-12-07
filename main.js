@@ -203,10 +203,8 @@ function print_products_list() {
 
 	// om det är fredag efter 15 till måndag 03:00 så uppdateras price_increase
 	if ((is_friday && today.getHours() >= 15) || is_saturday || is_sunday || (is_monday && today.getHours() <= 3)) {
-		console.log('Det är helg'); // TODO: kan ta bort denna log efter jag sett att det funkar på helgen
 		price_increase = 1.15;
 	} else {
-		console.log('Det är inte helg'); // TODO: kan ta bort denna log efter jag sett att det funkar på helgen
 		price_increase = 1;
 	}
 	donut_products.forEach((product) => {
