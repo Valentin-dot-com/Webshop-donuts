@@ -197,6 +197,33 @@ const bulk_purchase_discount = 0.9;
 
 print_products_list();
 
+// ---------------------------------------------
+// ----------- Nav-menu section ----------------
+// ---------------------------------------------
+
+const shopping_cart_btn = document.querySelector('#cart_btn');
+shopping_cart_btn.addEventListener('click', scroll_to_cart);
+
+const shopping_cart_aside = document.querySelector('#shopping_cart_aside');
+
+function scroll_to_cart() {
+
+	const offset = window.innerHeight * 0.1;
+
+	const cart_position = shopping_cart_aside.offsetTop;
+
+	const scroll_to_position = cart_position - offset;
+
+	window.scrollTo({
+		top:scroll_to_position,
+		behavior: 'smooth',
+	});
+}
+
+// ---------------------------------------------
+// -------------- Products section -------------
+// ---------------------------------------------
+
 function print_products_list() {
 	//rensa diven på produkter innan utskrift av uppdaterad information
 	product_list_div.innerHTML = '';
