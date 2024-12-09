@@ -484,10 +484,31 @@ function switch_payment_method(e) {
 // ------------ Form validation ----------------
 // ---------------------------------------------
 
-// Jag vet att jag hade kunnat refaktorera dessa, men hade redan gjort dessa när jag såg din lösning..
-// Så jag gör det om jag har tid mot slutet!
-
 const order_btn = document.querySelector('#submit_btn');
+
+const first_name_error_msg =document.querySelector('#first_name_error_msg');
+
+const last_name_error_msg =document.querySelector('#last_name_error_msg');
+
+const address_error_msg =document.querySelector('#address_error_msg');
+
+const postal_code_error_msg =document.querySelector('#postal_code_error_msg');
+
+const city_error_msg =document.querySelector('#city_error_msg');
+
+const phonenumber_error_msg =document.querySelector('#phonenumber_error_msg');
+
+const email_error_msg =document.querySelector('#email_error_msg');
+
+const cardnumber_error_msg =document.querySelector('#cardnumber_error_msg');
+
+const year_date_error_msg =document.querySelector('#year_date_error_msg');
+
+const cvc_error_msg =document.querySelector('#cvc_error_msg');
+
+const social_security_number_error_msg =document.querySelector('#social_security_number_error_msg');
+
+// ----------- inputs ----------------------
 
 const first_name_input = document.querySelector('#first_name_input');
 first_name_input.addEventListener('change', activater_order_button);
@@ -565,6 +586,7 @@ function activater_order_button() {
 	if (name_regex.exec(first_name_input.value) === null) {
 		// TODO: lägg till felmedelanden
 		console.warn('Incorrect first name');
+		
 		return;
 	}
 	if (name_regex.exec(last_name_input.value) === null) {
