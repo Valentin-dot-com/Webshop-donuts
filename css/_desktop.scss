@@ -1,1 +1,40 @@
-// TODO: gör layout för denna
+// ---------------------------------------
+// -------------- <main> -----------------
+// ---------------------------------------
+
+main {
+    background-color: rgb(153, 153, 153);
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 1rem;
+}
+
+.sort_products_section {
+    grid-column: span 8;
+}
+
+.product_page {
+    grid-column: span 6;
+    div {
+        justify-content: space-between;
+        .product {
+            flex-basis: 32%;
+        }
+    }
+}
+
+.shopping_cart_page {
+    margin: 0;
+    order: 0;
+    grid-column: span 2;
+    .cart_products {
+        button {
+            display: inline;
+        }
+    }
+}
+
+.order_form_page {
+    grid-column: 3 / span 3;
+    
+}

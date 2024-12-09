@@ -95,6 +95,10 @@
 // -------------- <main> -----------------
 // ---------------------------------------
 
+main {
+	background-color: #cc9f81;
+}
+
 .sort_products_section {
 	padding: 1rem;
 	.sorting_btns {
@@ -260,6 +264,11 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
+		input {
+			border: none;
+			border-radius: 3rem;
+			padding: 0.7rem;
+		}
 		.user_input {
 			flex-basis: 100%;
 			display: flex;
