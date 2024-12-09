@@ -411,8 +411,8 @@ function update_and_print_cart() {
 	});
 	final_order_sum = total_sum;
 
-	// Om det är måndag morgon, rabatt
-	if (today.getDay() === 1 && today.getHours() < 10) {
+	// Om det är måndag morgon, rabatt (gäller måndag kl 03.00-10.00, för att inte krocka med helgpåslaget mellan 00.00-03.00)
+	if (today.getDay() === 1 && (today.getHours() < 10 && today.getHours > 3)) {
 		final_order_sum = Math.round(total_sum * 0.9);
 		shopping_cart_products_overview.innerHTML += `
 		<p class="discount">Måndag morgon-rabatt, 10% dras av från din beställning: - ${Math.round(total_sum * 0.1)}kr</p>`;
