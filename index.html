@@ -45,7 +45,7 @@
 		<section class="hero_section">
 			<h2>Beställ nybakade munkar, direkt till din dörr</h2>
 			<figure>
-				<img src="assets/images/donuts_closup.webp" width="2000" height="1500" loading="lazy">
+				<img src="assets/images/donuts_closup.webp" width="2000" height="1500" loading="lazy" alt="a red and brown donut placed in a paper-box with some thin paper separating them.">
 				<figcaption>Upptäck vårt utbud av nybakade munkar med olika smaker</figcaption>
 			</figure>
 		</section>
@@ -81,43 +81,43 @@
 				<label class="user_input" id="first_name">
 					<!-- TODO: sätt name= på inputs -->
 					<span>Förnamn*</span>
-					<input id="first_name_input" type="text" required>
+					<input id="first_name_input" type="text" name="first_name" required>
 					<!-- TODO: Skulle kunna sköta denna formatering åt användaren faktistkt, med stor bokstav o så! -->
 					<span class="error_msg hidden">Fel format, försök igen (Stor bokstav följt av små bokstäver, inga specialtecken)</span>
 				</label>
 				<label class="user_input" id="last_name">
 					<span>Efternamn*</span>
-					<input id="last_name_input" type="text" required>
+					<input id="last_name_input" type="text" name="last_name" required>
 					<span class="error_msg hidden">Fel format, försök igen (Stor bokstav följt av små bokstäver, inga specialtecken)</span>
 				</label>
 				<label class="user_input" id="address">
 					<span>Adress*</span>
-					<input id="address_input" type="text" required>
+					<input id="address_input" type="text" name="address" required>
 					<span class="error_msg hidden">Fel format, försök igen (Stor bokstav, följt av ett husnummer)</span>
 				</label>
 				<label class="user_input" id="postal_code">
 					<span>Postnummer* (exempel: 123 45)</span>
-					<input id="postal_code_input" type="text" required>
+					<input id="postal_code_input" type="text" name="postal_code" required>
 					<span class="error_msg hidden">Fel format, försök igen</span>
 				</label>
 				<label class="user_input" id="city">
 					<span>Ort*</span>
-					<input id="city_input" type="text" required>
+					<input id="city_input" type="text" name="city" required>
 					<span class="error_msg hidden">Fel format, försök igen (Stor bokstav följt av små bokstäver)</span>
 				</label>
 				<label class="user_input">
 					<span>Ev. Portkod</span>
-					<input id="gatecode_input" type="number">
+					<input id="gatecode_input" type="number" name="gatecode">
 					<span class="error_msg hidden"></span>
 				</label>
 				<label class="user_input" id="phonenumber">
 					<span>Telefonnummer*</span>
-					<input id="phonenumber_input" type="tel" required>
+					<input id="phonenumber_input" type="tel" name="phonenumber" required>
 					<span class="error_msg hidden">Fel format, försök igen (börja med 0 eller +, sedan endast siffror)</span>
 				</label>
 				<label class="user_input" id="email">
 					<span>Email* (exempel@mail.se)</span>
-					<input id="email_input" type="email" required>
+					<input id="email_input" type="email" name="email" required>
 					<span class="error_msg hidden">Fel format, försök igen</span>
 				</label>
 
@@ -140,18 +140,18 @@
 				<div id="card_payment_fields">
 					<label class="user_input" id="cardnumber">
 						<span>Kortnummer*</span>
-						<input id="cardnumber_input" type="number">
+						<input id="cardnumber_input" type="number" name="cardnumber" required>
 						<span class="error_msg hidden">Fel format, försök igen</span>
 					</label>
 					<label class="user_input_year_date" id="year_date">
 						<span class="year_date_span">År / Månad*</span>
-						<input id="year_input" class="year_date_input" type="number"> /
-						<input id="month_input" class="year_date_input" type="number">
+						<input id="year_input" class="year_date_input" type="number" name="card_year" required> /
+						<input id="month_input" class="year_date_input" type="number" name="card_month" required>
 						<!-- Ingen error msg -->
 					</label>
 					<label class="user_input" id="cvc">
 						<span>CVC*</span>
-						<input id="cvc_input" type="number">
+						<input id="cvc_input" type="number" name="cvc">
 						<span class="error_msg hidden">Fel format, försök igen</span>
 					</label>
 				</div>
@@ -160,18 +160,18 @@
 				<div id="invoice_payment_field" class="hidden">
 					<label class="user_input" id="social_security_number">
 						<span>Personnnummer* (YYYYMMDD-XXXX)</span>
-						<input id="social_security_number_input" type="text" maxlength="13">
+						<input id="social_security_number_input" type="text" maxlength="13" name="social_security_number" required>
 						<span class="error_msg hidden">Fel format, försök igen(</span>
 					</label>
 				</div>
 
 				<label class="checkboxes">
 					<span>Jag godkänner hantering av mina personuppgifter</span>
-					<input id="personal_data_checkbox" type="checkbox" class="checkbox">
+					<input id="personal_data_checkbox" type="checkbox" class="checkbox" name="personal_data">
 				</label>
 				<label class="checkboxes">
 					<span>Jag vill skriva upp mig på ert nyhetsbrev</span>
-					<input id="newsletter_checkbox" type="checkbox" class="checkbox" checked>
+					<input id="newsletter_checkbox" type="checkbox" class="checkbox" name="newsletter" checked>
 				</label>
 
 				<input class="reset_form" id="reset_btn" type="reset" value="Rensa och återställ"
