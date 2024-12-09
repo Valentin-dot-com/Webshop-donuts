@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Gottfrids Munkar</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
 </head>
 
 <!-- Fråga till Jenni: 
@@ -79,37 +80,45 @@
 				<!-- Användarinformation -->
 				<label class="user_input">
 					<!-- TODO: Lägg validering i JS -->
-					 <!-- TODO: sätt name= på inputs -->
+					<!-- TODO: sätt name= på inputs -->
 					<span>Förnamn*</span>
 					<input id="first_name_input" type="text" required>
+					<p class="validation_message"></p>
 				</label>
 				<label class="user_input">
 					<span>Efternamn*</span>
 					<input id="last_name_input" type="text" required>
+					<p class="validation_message"></p>
 				</label>
 				<label class="user_input">
 					<span>Adress*</span>
 					<input id="address_input" type="text" required>
+					<p class="validation_message"></p>
 				</label>
 				<label class="user_input">
 					<span>Postnummer* (exempel: 123 45)</span>
 					<input id="postal_code_input" type="text" required>
+					<p class="validation_message"></p>
 				</label>
 				<label class="user_input">
 					<span>Ort*</span>
 					<input id="city_input" type="text" required>
+					<p class="validation_message"></p>
 				</label>
 				<label class="user_input">
 					<span>Ev. Portkod</span>
 					<input id="gatecode_input" type="number">
+					<p class="validation_message"></p>
 				</label>
 				<label class="user_input">
 					<span>Telefonnummer*</span>
 					<input id="phonenumber_input" type="tel" required>
+					<p class="validation_message"></p>
 				</label>
 				<label class="user_input">
 					<span>Email* (exempel@mail.se)</span>
 					<input id="email_input" type="email" required>
+					<p class="validation_message"></p>
 				</label>
 
 				<!-- Välja betalsätt -->
@@ -124,7 +133,7 @@
 					<label class="radio_btns">
 						<input id="invoice_btn" type="radio" name="payment_options" value="invoice">
 						<span>Faktura</span>
-					<!-- <button id="invoice_payment_btn" type="button">Faktura</button> -->
+						<!-- <button id="invoice_payment_btn" type="button">Faktura</button> -->
 					</label>
 				</div>
 
@@ -133,15 +142,18 @@
 					<label class="user_input">
 						<span>Kortnummer*</span>
 						<input id="cardnumber_input" type="number">
+						<p class="validation_message"></p>
 					</label>
 					<label class="user_input_year_date">
 						<span class="year_date_span">År / Månad*</span>
 						<input id="year_input" class="year_date_input" type="number"> /
 						<input id="month_input" class="year_date_input" type="number">
+						<p class="validation_message"></p>
 					</label>
 					<label class="user_input">
 						<span>CVC*</span>
 						<input id="cvc_input" type="number">
+						<p class="validation_message"></p>
 					</label>
 				</div>
 
@@ -150,7 +162,8 @@
 					<label class="user_input">
 						<span>Personnnummer*</span>
 						<input id="social_security_number_input" type="text" maxlength="13">
-					</label class="user_input">
+						<p class="validation_message"></p>
+					</label>
 				</div>
 
 				<label class="checkboxes">
@@ -159,7 +172,7 @@
 				</label>
 				<label class="checkboxes">
 					<span>Jag vill skriva upp mig på ert nyhetsbrev</span>
-					<input id="newsletter_checkbox" type="checkbox" class="checkbox">
+					<input id="newsletter_checkbox" type="checkbox" class="checkbox" checked>
 				</label>
 
 				<input class="reset_form" id="reset_btn" type="reset" value="Rensa och återställ"
