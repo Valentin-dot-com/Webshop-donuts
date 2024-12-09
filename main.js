@@ -244,6 +244,15 @@ function show_cart_sum_in_nav_menu() {
 	nav_cart_sum.innerHTML = `
 		${final_order_sum + delivery_fee}kr
 	`;
+	// TODO: lägg till effekt här?
+
+	nav_cart_sum.classList.add('cart_updated');
+
+	// TODO: kolla igenom denna, fixa till bättre
+	setTimeout(() => {
+		nav_cart_sum.classList.remove('cart_updated');
+		nav_cart_sum.computedStyleMap.backgroundColor = 'white';
+	}, 700);
 }
 
 // ---------------------------------------------
