@@ -531,7 +531,6 @@ const email_regex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 
 const social_security_number_input = document.querySelector('#social_security_number_input');
 social_security_number_input.addEventListener('change', activate_order_button);
-social_security_number_input.addEventListener('blur', validate_input);
 
 const social_security_number_regex = new RegExp(
 	/^20\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])-\d{4}$|^19\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])-\d{4}$/
@@ -652,14 +651,33 @@ function send_error_msg(id) {
 	const input_id = document.getElementById(id);
 	const error_msg = input_id.nextElementSibling;
 
-	error_msg.innerHTML = 'Fel, försök igen!';
-	input_id.classList.remove('valid');
+	error_msg.classList.remove('hidden');
 }
 
 function remove_error_msg(id) {
 	const input_id = document.getElementById(id);
 	const error_msg = input_id.nextElementSibling;
 
-	error_msg.innerHTML = '';
-	input_id.classList.add('valid');
+	error_msg.classList.add('hidden');
+}
+
+// ---------------- Send and reset form ------------------------
+
+const reset_form_btn = document.querySelector('#reset_btn');
+reset_form_btn.addEventListener('click', reset_form);
+
+// Tar bort eventuella felmeddelanden som var synliga under inputs
+function reset_form() {
+	const all_error_msg = document.querySelectorAll('.error_msg');
+	console.log(all_error_msg);
+	all_error_msg.forEach((msg) => {
+		msg.classList.add('hidden');
+	});
+
+	// all_error_msg.classList.add('hidden');
+
+	donut_products.forEach((product) => {
+		product.amount = 0;
+	});
+	update_and_print_cart();
 }

@@ -22,7 +22,7 @@
 			<h1>Gottfrids Munkar</h1>
 			<div class="shopping_cart">
 				<p class="cart_cost" id="cart_cost_sum"></p>
-				<button id="cart_btn" class="cart_button">
+				<button id="cart_btn" class="cart_button" aria-label="varukorg">
 					<span class="material-symbols-outlined">
 						shopping_cart
 					</span>
@@ -78,46 +78,46 @@
 			<form>
 				<!-- Användarinformation -->
 				<label class="user_input" id="first_name">
-					<!-- TODO: Lägg validering i JS -->
-					 <!-- TODO: sätt name= på inputs -->
+					<!-- TODO: sätt name= på inputs -->
 					<span>Förnamn*</span>
 					<input id="first_name_input" type="text" required>
-					<span class="error_msg"></span>
+					<!-- TODO: Skulle kunna sköta denna formatering åt användaren faktistkt, med stor bokstav o så! -->
+					<span class="error_msg hidden">Fel format, försök igen (Stor bokstav följt av små bokstäver, inga specialtecken)</span>
 				</label>
 				<label class="user_input" id="last_name">
 					<span>Efternamn*</span>
 					<input id="last_name_input" type="text" required>
-					<span class="error_msg"></span>
+					<span class="error_msg hidden">Fel format, försök igen (Stor bokstav följt av små bokstäver, inga specialtecken)</span>
 				</label>
 				<label class="user_input" id="address">
 					<span>Adress*</span>
 					<input id="address_input" type="text" required>
-					<span class="error_msg"></span>
+					<span class="error_msg hidden">Fel format, försök igen (Stor bokstav, följt av ett husnummer)</span>
 				</label>
 				<label class="user_input" id="postal_code">
 					<span>Postnummer* (exempel: 123 45)</span>
 					<input id="postal_code_input" type="text" required>
-					<span class="error_msg"></span>
+					<span class="error_msg hidden">Fel format, försök igen</span>
 				</label>
 				<label class="user_input" id="city">
 					<span>Ort*</span>
 					<input id="city_input" type="text" required>
-					<span class="error_msg"></span>
+					<span class="error_msg hidden">Fel format, försök igen (Stor bokstav följt av små bokstäver)</span>
 				</label>
 				<label class="user_input">
 					<span>Ev. Portkod</span>
 					<input id="gatecode_input" type="number">
-					<span class="error_msg"></span>
+					<span class="error_msg hidden"></span>
 				</label>
 				<label class="user_input" id="phonenumber">
 					<span>Telefonnummer*</span>
 					<input id="phonenumber_input" type="tel" required>
-					<span class="error_msg"></span>
+					<span class="error_msg hidden">Fel format, försök igen (börja med 0 eller +, sedan endast siffror)</span>
 				</label>
 				<label class="user_input" id="email">
 					<span>Email* (exempel@mail.se)</span>
 					<input id="email_input" type="email" required>
-					<span class="error_msg"></span>
+					<span class="error_msg hidden">Fel format, försök igen</span>
 				</label>
 
 				<!-- Välja betalsätt -->
@@ -139,7 +139,7 @@
 					<label class="user_input" id="cardnumber">
 						<span>Kortnummer*</span>
 						<input id="cardnumber_input" type="number">
-						<span class="error_msg"></span>
+						<span class="error_msg hidden">Fel format, försök igen</span>
 					</label>
 					<label class="user_input_year_date" id="year_date">
 						<span class="year_date_span">År / Månad*</span>
@@ -150,7 +150,7 @@
 					<label class="user_input" id="cvc">
 						<span>CVC*</span>
 						<input id="cvc_input" type="number">
-						<span class="error_msg"></span>
+						<span class="error_msg hidden">Fel format, försök igen</span>
 					</label>
 				</div>
 
@@ -159,7 +159,7 @@
 					<label class="user_input" id="social_security_number">
 						<span>Personnnummer*</span>
 						<input id="social_security_number_input" type="text" maxlength="13">
-						<span class="error_msg"></span>
+						<span class="error_msg hidden">Fel format, försök igen(</span>
 					</label>
 				</div>
 
