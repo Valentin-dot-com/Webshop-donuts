@@ -545,19 +545,15 @@ function is_social_security_number_valid() {
 
 const cardnumber_input = document.querySelector('#cardnumber_input');
 cardnumber_input.addEventListener('change', activate_order_button);
-cardnumber_input.addEventListener('blur', validate_input);
 
 const year_input = document.querySelector('#year_input');
 year_input.addEventListener('change', activate_order_button);
-year_input.addEventListener('blur', validate_input);
 
 const month_input = document.querySelector('#month_input');
 month_input.addEventListener('change', activate_order_button);
-month_input.addEventListener('blur', validate_input);
 
 const cvc_input = document.querySelector('#cvc_input');
 cvc_input.addEventListener('change', activate_order_button);
-cvc_input.addEventListener('blur', validate_input);
 
 // TODO: fixa regEx på kort om du hinner, var inget krav!!
 // denna kollar så att fältet inte är tomt...
