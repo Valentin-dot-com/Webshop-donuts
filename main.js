@@ -439,6 +439,10 @@ function update_and_print_cart() {
 		<span>Totalsumma: </span>
 		<span>${final_order_sum + delivery_fee}kr</span>
 	</p>
+	<label class="discount_code">
+		<span>Rabattkod:</span>
+		<input id="discount_code_input" type="text">
+	</label>
 	<div class="checkout_btn_wrapper">
 		<button class="visualize" type="button" id="to_checkout_btn">Gå till kassan</button>
 	</div>`;
@@ -627,19 +631,16 @@ function activate_order_button() {
 		}
 		remove_error_msg('cardnumber_input');
 
+		//ingen error_msg på dessa då egentligen inte valideras
 		if (credit_card_fields_regex.exec(year_input.value) === null) {
 			console.warn('Incorrect year');
-			send_error_msg('year_input');
 			return;
 		}
-		remove_error_msg('year_input');
 
 		if (credit_card_fields_regex.exec(month_input.value) === null) {
 			console.warn('Incorrect month');
-			send_error_msg('month_input');
 			return;
 		}
-		remove_error_msg('month_input');
 
 		if (credit_card_fields_regex.exec(cvc_input.value) === null) {
 			console.warn('Incorrect cvc');
