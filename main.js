@@ -489,6 +489,8 @@ function switch_payment_method(e) {
 
 const order_btn = document.querySelector('#submit_btn');
 
+const validation_msg = document.querySelector('#')
+
 const first_name_input = document.querySelector('#first_name_input');
 first_name_input.addEventListener('change', activater_order_button);
 
