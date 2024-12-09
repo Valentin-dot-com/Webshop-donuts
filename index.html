@@ -51,7 +51,7 @@
 		</section>
 	</header>
 	<main>
-		<section class="sort_products_section">
+		<section id="sort_products_section" class="sort_products_section">
 			<h2>Sortera efter:</h2>
 			<div class="sorting_btns">
 				<input id="sort_by_name" type="button" value="Namn">
@@ -159,7 +159,7 @@
 				<!-- Om Faktura: -->
 				<div id="invoice_payment_field" class="hidden">
 					<label class="user_input" id="social_security_number">
-						<span>Personnnummer*</span>
+						<span>Personnnummer* (YYYYMMDD-XXXX)</span>
 						<input id="social_security_number_input" type="text" maxlength="13">
 						<span class="error_msg hidden">Fel format, försök igen(</span>
 					</label>
@@ -180,6 +180,7 @@
 					aria-label="skicka beställning" disabled>
 			</form>
 		</section>
+		<p id="confirm_order_msg" class="confirm_order_msg hidden"></p>
 
 	</main>
 	<footer>

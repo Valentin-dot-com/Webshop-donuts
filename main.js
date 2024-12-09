@@ -195,6 +195,12 @@ const is_monday = today.getDay() === 1;
 let price_increase = 1;
 const bulk_purchase_discount = 0.9;
 
+// för att ha en slutlig totalsumma utanför funktionen, typ ifall den behöver kommas åt utanför själva "print-funktitonen"
+let final_order_sum = 0;
+
+// samma med denna som ovan, skulle kunna vara lokal variabel antar jag men sätter utanför pga samma som ovan
+let delivery_fee = 0;
+
 print_products_list();
 
 // ---------------------------------------------
@@ -210,7 +216,6 @@ heading_one.addEventListener('click', scroll_to_top);
 const shopping_cart_aside = document.querySelector('#shopping_cart_aside');
 
 function scroll_to_cart() {
-
 	const offset = window.innerHeight * 0.1;
 
 	const cart_position = shopping_cart_aside.offsetTop;
@@ -218,7 +223,7 @@ function scroll_to_cart() {
 	const scroll_to_position = cart_position - offset;
 
 	window.scrollTo({
-		top:scroll_to_position,
+		top: scroll_to_position,
 		behavior: 'smooth',
 	});
 }
@@ -408,12 +413,6 @@ function decrease_product_count(e) {
 const shopping_cart_products_overview = document.querySelector('#cart_products_added');
 
 const go_to_checkout_btn = document.querySelector('#to_checkout_btn');
-
-// för att ha en slutlig totalsumma utanför funktionen, typ ifall den behöver kommas åt utanför själva "print-funktitonen"
-let final_order_sum = 0;
-
-// samma med denna som ovan, skulle kunna vara lokal variabel antar jag men sätter utanför pga samma som ovan
-let delivery_fee = 0;
 
 function update_and_print_cart() {
 	// vi vill bara ha de produkter i vår array som har en amount som är större än 0
@@ -615,7 +614,6 @@ const credit_card_fields_regex = new RegExp(/^.+$/);
 function activate_order_button() {
 	order_btn.setAttribute('disabled', '');
 	if (name_regex.exec(first_name_input.value) === null) {
-		// TODO: lägg till felmedelanden
 		console.warn('Incorrect first name');
 		send_error_msg('first_name_input');
 		return;
@@ -730,4 +728,41 @@ function reset_form() {
 		product.amount = 0;
 	});
 	update_and_print_cart();
+}
+
+const submit_btn = document.querySelector('#submit_btn');
+submit_btn.addEventListener('click', confirm_order_message);
+
+const confirm_order_msg = document.querySelector('#confirm_order_msg');
+
+const order_form_section = document.querySelector('#order_form_section');
+
+const sort_products_section = document.querySelector('#sort_products_section');
+
+const product_page_section = document.querySelector('#product_page_section');
+
+let delivery_time_minutes = 30;
+
+function confirm_order_message(e) {
+	e.preventDefault();
+
+	sort_products_section.classList.add('hidden');
+	product_page_section.classList.add('hidden');
+	shopping_cart_aside.classList.add('hidden');
+	order_form_section.classList.add('hidden');
+
+	if (today.getHours >= 0 && today.getHours < 5) {
+		delivery_time_minutes = 45;
+	} else if (is_friday || is_saturday || is_sunday) {
+		delivery_time_minutes = 90;
+	} else {
+		delivery_time_minutes = 30;
+	}
+
+	if (is_friday && today.getHours >= 11 && today.getHours < 13) {
+		confirm_order_msg.innerHTML = `Tack för din beställning! Din order kommer att levereras kl 15:00`;
+	} else {
+		confirm_order_msg.innerHTML = `Tack för din beställning! Din order kommer att levereras om ${delivery_time_minutes} minuter.`;
+	}
+	confirm_order_msg.classList.remove('hidden');
 }
