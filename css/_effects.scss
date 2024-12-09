@@ -1,7 +1,15 @@
 .hidden {
-    display: none;
+	display: none;
 }
 
 .visualize {
-    display: inline;
+	display: inline;
+}
+
+.error_msg {
+	color: red;
+}
+
+.valid {
+	background-color: #65fa65; //TODO: lägg en bättre grön färg
 }

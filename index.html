@@ -82,34 +82,42 @@
 					 <!-- TODO: sätt name= på inputs -->
 					<span>Förnamn*</span>
 					<input id="first_name_input" type="text" required>
+					<span class="error_msg"></span>
 				</label>
 				<label class="user_input" id="last_name">
 					<span>Efternamn*</span>
 					<input id="last_name_input" type="text" required>
+					<span class="error_msg"></span>
 				</label>
 				<label class="user_input" id="address">
 					<span>Adress*</span>
 					<input id="address_input" type="text" required>
+					<span class="error_msg"></span>
 				</label>
 				<label class="user_input" id="postal_code">
 					<span>Postnummer* (exempel: 123 45)</span>
 					<input id="postal_code_input" type="text" required>
+					<span class="error_msg"></span>
 				</label>
 				<label class="user_input" id="city">
 					<span>Ort*</span>
 					<input id="city_input" type="text" required>
+					<span class="error_msg"></span>
 				</label>
 				<label class="user_input">
 					<span>Ev. Portkod</span>
 					<input id="gatecode_input" type="number">
+					<span class="error_msg"></span>
 				</label>
 				<label class="user_input" id="phonenumber">
 					<span>Telefonnummer*</span>
 					<input id="phonenumber_input" type="tel" required>
+					<span class="error_msg"></span>
 				</label>
 				<label class="user_input" id="email">
 					<span>Email* (exempel@mail.se)</span>
 					<input id="email_input" type="email" required>
+					<span class="error_msg"></span>
 				</label>
 
 				<!-- Välja betalsätt -->
@@ -131,15 +139,18 @@
 					<label class="user_input" id="cardnumber">
 						<span>Kortnummer*</span>
 						<input id="cardnumber_input" type="number">
+						<span class="error_msg"></span>
 					</label>
 					<label class="user_input_year_date" id="year_date">
 						<span class="year_date_span">År / Månad*</span>
 						<input id="year_input" class="year_date_input" type="number"> /
 						<input id="month_input" class="year_date_input" type="number">
+						<!-- Ingen error msg -->
 					</label>
 					<label class="user_input" id="cvc">
 						<span>CVC*</span>
 						<input id="cvc_input" type="number">
+						<span class="error_msg"></span>
 					</label>
 				</div>
 
@@ -148,6 +159,7 @@
 					<label class="user_input" id="social_security_number">
 						<span>Personnnummer*</span>
 						<input id="social_security_number_input" type="text" maxlength="13">
+						<span class="error_msg"></span>
 					</label>
 				</div>
 

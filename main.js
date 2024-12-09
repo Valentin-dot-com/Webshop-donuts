@@ -412,7 +412,7 @@ function update_and_print_cart() {
 	final_order_sum = total_sum;
 
 	// Om det är måndag morgon, rabatt (gäller måndag kl 03.00-10.00, för att inte krocka med helgpåslaget mellan 00.00-03.00)
-	if (today.getDay() === 1 && (today.getHours() < 10 && today.getHours > 3)) {
+	if (today.getDay() === 1 && today.getHours() < 10 && today.getHours > 3) {
 		final_order_sum = Math.round(total_sum * 0.9);
 		shopping_cart_products_overview.innerHTML += `
 		<p class="discount">Måndag morgon-rabatt, 10% dras av från din beställning: - ${Math.round(total_sum * 0.1)}kr</p>`;
@@ -463,8 +463,8 @@ let selected_payment_option = 'card';
 function check_if_invoice_available() {
 	if (final_order_sum > 800) {
 		invoice_radio_btn.setAttribute('disabled', '');
-	}
-	else { //Går det bra att ha denna som en else eller finns det en bättre lösning?
+	} else {
+		//Går det bra att ha denna som en else eller finns det en bättre lösning?
 		invoice_radio_btn.removeAttribute('disabled');
 	}
 }
@@ -486,53 +486,28 @@ function switch_payment_method(e) {
 
 const order_btn = document.querySelector('#submit_btn');
 
-const first_name_error_msg =document.querySelector('#first_name_error_msg');
-
-const last_name_error_msg =document.querySelector('#last_name_error_msg');
-
-const address_error_msg =document.querySelector('#address_error_msg');
-
-const postal_code_error_msg =document.querySelector('#postal_code_error_msg');
-
-const city_error_msg =document.querySelector('#city_error_msg');
-
-const phonenumber_error_msg =document.querySelector('#phonenumber_error_msg');
-
-const email_error_msg =document.querySelector('#email_error_msg');
-
-const cardnumber_error_msg =document.querySelector('#cardnumber_error_msg');
-
-const year_date_error_msg =document.querySelector('#year_date_error_msg');
-
-const cvc_error_msg =document.querySelector('#cvc_error_msg');
-
-const social_security_number_error_msg =document.querySelector('#social_security_number_error_msg');
-
 // ----------- inputs ----------------------
 
 const first_name_input = document.querySelector('#first_name_input');
-first_name_input.addEventListener('change', activater_order_button);
+first_name_input.addEventListener('change', activate_order_button);
 
 const last_name_input = document.querySelector('#last_name_input');
-last_name_input.addEventListener('change', activater_order_button);
+last_name_input.addEventListener('change', activate_order_button);
 
 const address_input = document.querySelector('#address_input');
-address_input.addEventListener('change', activater_order_button);
+address_input.addEventListener('change', activate_order_button);
 
 const postal_code_input = document.querySelector('#postal_code_input');
-postal_code_input.addEventListener('change', activater_order_button);
+postal_code_input.addEventListener('change', activate_order_button);
 
 const city_input = document.querySelector('#city_input');
-city_input.addEventListener('change', activater_order_button);
-
-const gatecode_input = document.querySelector('#gatecode_input'); // denna kanske är onödig då den inte ska valideras
-gatecode_input.addEventListener('change', activater_order_button);
+city_input.addEventListener('change', activate_order_button);
 
 const phonenumber_input = document.querySelector('#phonenumber_input');
-phonenumber_input.addEventListener('change', activater_order_button);
+phonenumber_input.addEventListener('change', activate_order_button);
 
 const email_input = document.querySelector('#email_input');
-email_input.addEventListener('change', activater_order_button);
+email_input.addEventListener('change', activate_order_button);
 
 // RegEx for these input^
 
@@ -551,7 +526,8 @@ const email_regex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 // -------------- Invoice -------------------------------
 
 const social_security_number_input = document.querySelector('#social_security_number_input');
-social_security_number_input.addEventListener('change', activater_order_button);
+social_security_number_input.addEventListener('change', activate_order_button);
+social_security_number_input.addEventListener('blur', validate_input);
 
 const social_security_number_regex = new RegExp(
 	/^20\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])-\d{4}$|^19\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])-\d{4}$/
@@ -564,16 +540,20 @@ function is_social_security_number_valid() {
 // ----------------- Card payment ----------------------------
 
 const cardnumber_input = document.querySelector('#cardnumber_input');
-cardnumber_input.addEventListener('change', activater_order_button);
+cardnumber_input.addEventListener('change', activate_order_button);
+cardnumber_input.addEventListener('blur', validate_input);
 
 const year_input = document.querySelector('#year_input');
-year_input.addEventListener('change', activater_order_button);
+year_input.addEventListener('change', activate_order_button);
+year_input.addEventListener('blur', validate_input);
 
 const month_input = document.querySelector('#month_input');
-month_input.addEventListener('change', activater_order_button);
+month_input.addEventListener('change', activate_order_button);
+month_input.addEventListener('blur', validate_input);
 
 const cvc_input = document.querySelector('#cvc_input');
-cvc_input.addEventListener('change', activater_order_button);
+cvc_input.addEventListener('change', activate_order_button);
+cvc_input.addEventListener('blur', validate_input);
 
 // TODO: fixa regEx på kort om du hinner, var inget krav!!
 // denna kollar så att fältet inte är tomt...
@@ -581,38 +561,60 @@ const credit_card_fields_regex = new RegExp(/^.+$/);
 
 // ------------------ Check form ----------------------------
 
-function activater_order_button() {
+// Denna fungerar endast om jag fyller i uppifrån och ner i rätt ordning, alltså med felmeddelanden
+// Den går inte heller vidare om ett fält är fel...
+function activate_order_button() {
 	order_btn.setAttribute('disabled', '');
 	if (name_regex.exec(first_name_input.value) === null) {
 		// TODO: lägg till felmedelanden
 		console.warn('Incorrect first name');
-		
+		send_error_msg('first_name_input');
 		return;
 	}
+	remove_error_msg('first_name_input');
+
 	if (name_regex.exec(last_name_input.value) === null) {
 		console.warn('Incorrect last name');
+		send_error_msg('last_name_input');
 		return;
 	}
+	remove_error_msg('last_name_input');
+
 	if (address_regex.exec(address_input.value) === null) {
 		console.warn('Incorrect address');
+		send_error_msg('address_input');
 		return;
 	}
+	remove_error_msg('address_input');
+
 	if (postal_code_regex.exec(postal_code_input.value) === null) {
 		console.warn('Incorrect postal code');
+		send_error_msg('postal_code_input');
 		return;
 	}
+	remove_error_msg('postal_code_input');
+
 	if (city_regex.exec(city_input.value) === null) {
 		console.warn('Incorrect city');
+		send_error_msg('city_input');
 		return;
 	}
+	remove_error_msg('city_input');
+
 	if (phonenumber_regex.exec(phonenumber_input.value) === null) {
 		console.warn('Incorrect phonenumber');
+		send_error_msg('phonenumber_input');
 		return;
 	}
+	remove_error_msg('phonenumber_input');
+
 	if (email_regex.exec(email_input.value) === null) {
 		console.warn('Incorrect email');
+		send_error_msg('email_input');
 		return;
 	}
+	remove_error_msg('email_input');
+
 	if (selected_payment_option === 'invoice' && !is_social_security_number_valid()) {
 		console.warn('Incorrect social security number');
 		return;
@@ -620,20 +622,47 @@ function activater_order_button() {
 	if (selected_payment_option === 'card') {
 		if (credit_card_fields_regex.exec(cardnumber_input.value) === null) {
 			console.warn('Incorrect cardnumber');
+			send_error_msg('cardnumber_input');
 			return;
 		}
+		remove_error_msg('cardnumber_input');
+
 		if (credit_card_fields_regex.exec(year_input.value) === null) {
 			console.warn('Incorrect year');
+			send_error_msg('year_input');
 			return;
 		}
+		remove_error_msg('year_input');
+
 		if (credit_card_fields_regex.exec(month_input.value) === null) {
 			console.warn('Incorrect month');
+			send_error_msg('month_input');
 			return;
 		}
+		remove_error_msg('month_input');
+
 		if (credit_card_fields_regex.exec(cvc_input.value) === null) {
 			console.warn('Incorrect cvc');
+			send_error_msg('cvc_input');
 			return;
 		}
+		remove_error_msg('cvc_input');
 	}
 	order_btn.removeAttribute('disabled', '');
+}
+
+function send_error_msg(id) {
+	const input_id = document.getElementById(id);
+	const error_msg = input_id.nextElementSibling;
+
+	error_msg.innerHTML = 'Fel, försök igen!';
+	input_id.classList.remove('valid');
+}
+
+function remove_error_msg(id) {
+	const input_id = document.getElementById(id);
+	const error_msg = input_id.nextElementSibling;
+
+	error_msg.innerHTML = '';
+	input_id.classList.add('valid');
 }

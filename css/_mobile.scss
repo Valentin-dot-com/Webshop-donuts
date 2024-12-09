@@ -280,9 +280,6 @@
 			min-width: 100%;
 			display: flex;
 			justify-content: space-between;
-			.checkbox {
-				color: red; // TODO: ta bort ocm det inte behövs styling
-			}
 		}
 		.reset_form, .submit_form {
 			flex-basis: 60%;
