@@ -204,6 +204,9 @@ print_products_list();
 const shopping_cart_btn = document.querySelector('#cart_btn');
 shopping_cart_btn.addEventListener('click', scroll_to_cart);
 
+const heading_one = document.querySelector('h1');
+heading_one.addEventListener('click', scroll_to_top);
+
 const shopping_cart_aside = document.querySelector('#shopping_cart_aside');
 
 function scroll_to_cart() {
@@ -218,6 +221,24 @@ function scroll_to_cart() {
 		top:scroll_to_position,
 		behavior: 'smooth',
 	});
+}
+
+function scroll_to_top() {
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth',
+	});
+}
+
+// -------------------
+
+// TODO: kom på bättre namn kanske
+const nav_cart_sum = document.querySelector('#cart_cost_sum');
+
+function show_cart_sum_in_nav_menu() {
+	nav_cart_sum.innerHTML = `
+		${final_order_sum + delivery_fee}kr
+	`;
 }
 
 // ---------------------------------------------
@@ -406,6 +427,7 @@ function update_and_print_cart() {
 		<p>Din varukorg är tom</p>`;
 		final_order_sum = 0;
 		delivery_fee = 0;
+		show_cart_sum_in_nav_menu();
 		return;
 	}
 
@@ -474,11 +496,12 @@ function update_and_print_cart() {
 		<button class="visualize" type="button" id="to_checkout_btn">Gå till kassan</button>
 	</div>`;
 	check_if_invoice_available();
+	show_cart_sum_in_nav_menu();
 	// TODO: lägg till visuell feedback att varukorgen har uppdaterats1
 }
 
 // ---------------------------------------------
-// --------- Shopping Cart section -------------
+// --------- Shopping Form section -------------
 // ---------------------------------------------
 
 const payment_option_radio_btns = Array.from(document.querySelectorAll('input[name="payment_options"]'));

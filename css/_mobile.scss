@@ -33,6 +33,22 @@
 		font-size: clamp(2rem, 6vh, 8rem);
 		color: white;
 	}
+	.shopping_cart {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		.cart_cost {
+			min-height: 5vh;
+			width: auto;
+			aspect-ratio: 1/ 1;
+			background-color: white;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
 	button span {
 		background-color: white;
 		width: 100%;
