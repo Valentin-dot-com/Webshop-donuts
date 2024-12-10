@@ -240,6 +240,19 @@ function scroll_to_top() {
 	});
 }
 
+function scroll_to_checkout() {
+	const offset = window.innerHeight * 0.1;
+
+	const cart_position = order_form_section.offsetTop;
+
+	const scroll_to_position = cart_position - offset;
+
+	window.scrollTo({
+		top: scroll_to_position,
+		behavior: 'smooth',
+	});
+}
+
 // -------------------
 
 // TODO: kom på bättre namn kanske
@@ -249,11 +262,9 @@ function show_cart_sum_in_nav_menu() {
 	nav_cart_sum.innerHTML = `
 		${final_order_sum + delivery_fee}kr
 	`;
-	// TODO: lägg till effekt här?
 
 	nav_cart_sum.classList.add('cart_updated');
 
-	// TODO: kolla igenom denna, fixa till bättre
 	setTimeout(() => {
 		nav_cart_sum.classList.remove('cart_updated');
 		nav_cart_sum.computedStyleMap.backgroundColor = 'white';
@@ -426,7 +437,7 @@ function decrease_product_count(e) {
 
 const shopping_cart_products_overview = document.querySelector('#cart_products_added');
 
-const go_to_checkout_btn = document.querySelector('#to_checkout_btn');
+// const go_to_checkout_btn = document.querySelector('#to_checkout_btn');
 
 function update_and_print_cart() {
 	// vi vill bara ha de produkter i vår array som har en amount som är större än 0
@@ -508,9 +519,10 @@ function update_and_print_cart() {
 	<div class="checkout_btn_wrapper">
 		<button class="visualize" type="button" id="to_checkout_btn">Gå till kassan</button>
 	</div>`;
+	const go_to_checkout_btn = document.querySelector('#to_checkout_btn');
+	go_to_checkout_btn.addEventListener('click', scroll_to_checkout);
 	check_if_invoice_available();
 	show_cart_sum_in_nav_menu();
-	// TODO: lägg till visuell feedback att varukorgen har uppdaterats1
 }
 
 // ---------------------------------------------

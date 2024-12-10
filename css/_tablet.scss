@@ -3,7 +3,8 @@
 // ---------------------------------------
 
 .hero_section {
-    height: 60vh;
+    max-height: 60vh;
+    overflow: hidden;
     figure {
         height: 100%;
         width: auto;
