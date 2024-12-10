@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'BNSocial';
+    src: url('../assets/fonts/BNSocial.otf');
+}
+
+$fonts: 'BNSocial', sans-serif;
+
+h1, h2, h3, h4, p, a, span, div, label, button, input, li, figcaption {
+    font-family: $fonts;
+}
