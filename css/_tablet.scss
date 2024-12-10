@@ -3,15 +3,23 @@
 // ---------------------------------------
 
 .hero_section {
-    max-height: 60vh;
+    max-height: 80vh;
     overflow: hidden;
+    h2 {
+        top: 40%;
+        font-size: clamp(2rem, 4vh, 5rem);
+    }
     figure {
         height: 100%;
         width: auto;
-    }
-    img {
-        max-height: 100%;
-        object-fit: cover;
+        img {
+            max-height: 100%;
+            object-fit: cover;
+        }
+        figcaption {
+            top: 50%;
+            font-size: clamp(1rem, 3vh, 4rem);
+        }
     }
 }
 
@@ -40,18 +48,10 @@ main {
             flex-basis: calc(50vw - 3rem);
             h3 {
                 font-size: clamp(1rem, 2.3vw, 4rem);
-                padding-left: 1rem;
-            }
-            p{
-                padding-left: 1rem;
             }
             p:nth-of-type(1) {
                 font-size: clamp(1rem, 2.3vw, 4rem);
                 padding-left: 0;
-                padding-right: 1rem;
-            }
-            .ratings {
-                padding-left: 1rem;
             }
         }
     }

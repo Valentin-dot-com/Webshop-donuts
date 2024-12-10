@@ -71,7 +71,9 @@ body {
 	}
 	figure {
 		margin: 0;
+		max-height: 100%;
 		position: relative;
+		margin: 0 auto;
 		img {
 			min-width: 100%;
 			height: auto;
@@ -81,7 +83,7 @@ body {
 		}
 		figcaption {
 			position: absolute;
-			top: 70%;
+			top: 65%;
 			left: 1rem;
 			color: white;
 		}
@@ -159,6 +161,7 @@ main {
                 flex-basis: 100%;
 				font-size: 1.1rem;
 				color: var(--text_color);
+				margin-top: 1rem;
             }
 			.ratings {
                 flex-basis: 100%;
@@ -321,6 +324,11 @@ main {
 		}
 		span {
 			color: var(--secondary_color);
+			font-size: 1.5rem;
+		}
+		.error_msg {
+			color: red;
+			font-size: 1rem;
 		}
 		.user_input {
 			flex-basis: 100%;
@@ -376,8 +384,15 @@ main {
 			transform: translateX(-50%);
 			color: var(--text_color);
 		}
-		.submit_form {
+		.reset_form {
 			background-color: var(--highlight_color);
+		}
+		.submit_form {
+			background-color: var(--accent_color);
+		}
+		.submit_form:disabled {
+			background-color: #b3a28c;
+			color: #656568;
 		}
 	}
 }
@@ -385,6 +400,7 @@ main {
 .confirm_order_msg {
 	padding: 5rem;
 	font-size: 2rem;
+	color: var(--secondary_color);
 }
 
 .too_slow_msg {
@@ -392,6 +408,7 @@ main {
 	padding: 1rem;
 	font-size: 2rem;
 	text-align: center;
+	color: var(--secondary_color);
 }
 
 // ---------------------------------------

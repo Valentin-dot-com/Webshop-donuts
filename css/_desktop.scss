@@ -4,6 +4,9 @@
 
 .hero_section {
     max-height: 90vh;
+    h2 {
+        top: 60%;
+    }
 }
 
 // ---------------------------------------
@@ -27,6 +30,17 @@ main {
         justify-content: space-between;
         .product {
             flex-basis: 32%;
+            h3 {
+                font-size: clamp(1rem, 1.5vw, 4rem);
+            }
+            p:nth-child(3) {
+                font-size: clamp(1rem, 1.5vw, 4rem);
+            }
+            .ratings {
+                p {
+                    font-size: clamp(1rem, 2vw, 2rem);
+                }
+            }
         }
     }
 }
@@ -51,5 +65,12 @@ main {
 
 .order_form_page {
     grid-column: 3 / span 4;
-    
+}
+
+.confirm_order_msg {
+    grid-column: 3 / span 4;
+}
+
+.too_slow_msg {
+    grid-column: 3 / span 4;
 }
