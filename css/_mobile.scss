@@ -99,10 +99,15 @@ main {
 .sort_products_section {
 	padding: 1rem;
 	border-bottom: 2px solid $accent_color;
+	h2 {
+		color: $secondary_color;
+		font-size: clamp(1.5rem, 4vw, 3rem);
+	}
 	.sorting_btns {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
+		margin-top: 1rem;
 		input {
 			border: none;
 			color: $secondary_color;
@@ -117,6 +122,10 @@ main {
 .product_page {
 	padding: 1rem;
 	border-bottom: 2px solid $accent_color;
+	h2 {
+		color: $secondary_color;
+		font-size: clamp(1.5rem, 4vw, 3rem);
+	}
 	div {
         margin-top: 1rem;
         .product {
