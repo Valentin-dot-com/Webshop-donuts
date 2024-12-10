@@ -1,3 +1,7 @@
+body {
+	position: relative;
+}
+
 // ---------------------------------------
 // -------------- Header -----------------
 // ---------------------------------------
@@ -7,14 +11,14 @@
 	min-height: 10vh;
 	display: flex;
 	justify-content: space-between;
-	background-color: #1e1f26;
+	background-color: $primary_color;
 	align-items: center;
 	padding: 1rem;
 	position: fixed;
 	top: 0;
 	z-index: 5;
 	h1 {
-		color: white; //ändra färger osv
+		color: $secondary_color;
 	}
 	button {
 		height: 6vh;
@@ -31,7 +35,7 @@
 		background: none;
 		height: 100%;
 		font-size: clamp(2rem, 6vh, 8rem);
-		color: white;
+		color: $secondary_color;
 	}
 	.shopping_cart {
 		display: flex;
@@ -41,11 +45,12 @@
 	}
 }
 
-.cart_cost { // TODO: Centrera p-taggen vertikalt
+.cart_cost {
 	min-height: 5vh;
 	width: auto;
 	aspect-ratio: 1/ 1;
-	background-color: white;
+	background-color: $secondary_color;
+	color: $accent_color;
 	border-radius: 50%;
 	display: flex;
 	justify-content: center;
@@ -88,18 +93,20 @@
 // ---------------------------------------
 
 main {
-	background-color: #cc9f81;
+	background-color: $primary_color;
 }
 
 .sort_products_section {
 	padding: 1rem;
+	border-bottom: 2px solid $accent_color;
 	.sorting_btns {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
 		input {
 			border: none;
-			background-color: bisque;
+			color: $secondary_color;
+			background-color: $highlight_color;
 			padding: 0.5rem;
 			border-radius: 3rem;
 			cursor: pointer; // TODO: fixa färg osv
@@ -109,16 +116,18 @@ main {
 
 .product_page {
 	padding: 1rem;
-	border-bottom: 2px solid black;
+	border-bottom: 2px solid $accent_color;
 	div {
         margin-top: 1rem;
         .product {
             margin-bottom: 2rem;
+			padding: 1rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
 			align-items: baseline;
-            border-bottom: 1px solid black;
+			background-color: $accent_color;
+			border-radius: 1rem;
             .product_img {
                 flex-basis: 100%;
 				max-width: 100%;
@@ -129,15 +138,18 @@ main {
             h3 {
 				font-size: clamp(1.5rem, 4vw, 8rem); // TODO: kolla vidare på denna
                 flex-basis: 80%;
+				color: $text_color;
             }
 			p:nth-child(3) {
 				font-size: clamp(1.5rem, 4vw, 8rem); // TODO: kolla vidare på denna
 				flex-basis: 20%;
 				text-align: right;
+				color: $text_color;
 			}
             p:nth-of-type(2) {
                 flex-basis: 100%;
 				font-size: 1.1rem;
+				color: $text_color;
             }
 			.ratings {
                 flex-basis: 100%;
@@ -145,6 +157,7 @@ main {
 				align-items: center;
 				justify-content: flex-start;
 				gap: 0.5rem;
+				color: $text_color;
 				p {
 					font-size: 1.5rem;
 				}
@@ -170,6 +183,7 @@ main {
 					justify-content: center;
                 }
                 button {
+					background-color: $primary_color;
                     position: relative;
                     padding: 0;
                     min-width: 15%;
@@ -177,9 +191,11 @@ main {
                     font-size: 2rem;
                     vertical-align: center;
                     text-align: center;
+					border: none;
 					border-radius: 50%;
                     cursor: pointer;
                     span {
+						color: $secondary_color;
                         font-size: clamp(2rem, 2vw, 6rem);
                         pointer-events: none; //för att annars gick det inte att klicka om musen var över span
                         position: absolute;
@@ -202,32 +218,56 @@ main {
 	padding: 1rem;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
+	border-bottom: 2px solid $accent_color;
 	h2 {
 		font-size: clamp(1.5rem, 4vw, 3rem);
 		margin-bottom: 1rem;
+		color: $secondary_color;
 	}
 	.cart_products {
 		display: flex;
 		flex-direction: column;
+		color: $secondary_color;
+		background-color: white;
+		border-radius: 3rem;
+		padding: 1rem;
 		.shopping_cart_item {
 			margin-top: 1rem;
-			border-bottom: 1px solid black; // TODO: ta bort/ändra
+			color: $secondary_color;
+			border-bottom: 1px solid $secondary_color;
 			.shopping_cart_products {
 				display: flex;
 				justify-content: space-between;
 			}
 			.discount_msg {
-				opacity: 50%;
+				color: $highlight_color;
 			}
 		}
 		.delivery_fee {
 			display: flex;
 			justify-content: space-between;
+			color: $accent_color;
+			margin-top: 1rem;
+			border-bottom: 1px solid $accent_color;
 		}
 		.total_sum {
 			font-size: 1.2rem;
 			display: flex;
 			justify-content: space-between;
+			margin-top: 1rem;
+		}
+		.discount_code {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 1rem;
+			input {
+				color: $secondary_color;
+				background-color: $primary_color;
+				border: none;
+				border-radius: 3rem;
+				padding: 0.5rem;
+			}
 		}
 	}
 	.checkout_btn_wrapper {
@@ -235,6 +275,12 @@ main {
 		display: flex;
 		justify-content: center;
 		button {
+			margin-top: 1rem;
+			border: none;
+			border-radius: 3rem;
+			padding: 0.7rem;
+			padding-inline: 2rem;
+			background-color: $highlight_color;
 			cursor: pointer;
 		}
 	}
@@ -251,15 +297,21 @@ main {
 	h2 {
 		font-size: clamp(1.5rem, 4vw, 3rem);
 		margin-bottom: 1rem;
+		color: $secondary_color;
 	}
 	form {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
 		input {
+			background-color: $form_bg_color;
+			color: $secondary_color;
 			border: none;
 			border-radius: 3rem;
 			padding: 0.7rem;
+		}
+		span {
+			color: $secondary_color;
 		}
 		.user_input {
 			flex-basis: 100%;
@@ -280,12 +332,19 @@ main {
 		}
 		p {
 			flex-basis: 100%;
+			color: $secondary_color;
 		}
 		.payment_choice_btn {
 			flex-basis: 100%;
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
+			input[type="radio"] {
+				accent-color: $accent_color;
+			}
+			input[type="radio"]:checked + span {
+				color: $accent_color;				
+			}
 		}
 		div {
 			min-width: 100%;
@@ -297,12 +356,19 @@ main {
 			min-width: 100%;
 			display: flex;
 			justify-content: space-between;
+			input {
+				accent-color: $accent_color;
+			}
 		}
 		.reset_form, .submit_form {
 			flex-basis: 60%;
 			position: relative;
 			left: 50%;
 			transform: translateX(-50%);
+			color: $text_color;
+		}
+		.submit_form {
+			background-color: $highlight_color;
 		}
 	}
 }
@@ -312,11 +378,20 @@ main {
 	font-size: 2rem;
 }
 
+.too_slow_msg {
+	width: 100%;
+	padding: 1rem;
+	font-size: 2rem;
+	text-align: center;
+}
+
 // ---------------------------------------
 // -------------- Footer -----------------
 // ---------------------------------------
 
 footer {
+	// position: absolute;
+	// bottom: 0;
 	display: flex;
 	justify-content: space-around;
 	margin: 1rem;

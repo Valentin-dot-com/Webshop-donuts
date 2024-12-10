@@ -1,6 +1,8 @@
-@use 'vendor/reset';
+@import 'vendor/reset';
 
-@use 'mobile';
+@import 'colors';
+
+@import 'mobile';
 
 @media screen and (min-width: 800px) {
 	@import 'tablet';
@@ -10,5 +12,4 @@
 	@import 'desktop';
 }
 
-// Jag vet inte om denna ligger rätt, eller hur jag sla göra riktigt med denna
 @import 'effects';

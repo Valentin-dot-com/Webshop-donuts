@@ -491,7 +491,7 @@ function update_and_print_cart() {
 	shopping_cart_products_overview.innerHTML += `
 	<p class="delivery_fee">
 		<span>Frakt: </span>
-		<span>${delivery_fee}</span>
+		<span>${delivery_fee}kr</span>
 	</p>`;
 
 	// för att printa ut totalsumman av alla produkter i varukorgen
@@ -804,6 +804,7 @@ function reload_page() {
 	// Jag tänkte först skriva som funktionen ovan fast tvärtom och bara visa allt igen
 	// Men en reload startar ju om timern igen så det kändes mer simpelt? Kanske inte var rätt
 	// Funktionen ovan rensar ju alla formulär m.m. så jag hade bara behövt starta om timern också
+	// Tänker typ att detta också gör att datum och tid inte kan kringås genom att vara länge inne på sidan.
 
 	location.reload();
 }

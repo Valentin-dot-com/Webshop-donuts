@@ -3,7 +3,7 @@
 // ---------------------------------------
 
 .hero_section {
-    height: 90vh;
+    height: 60vh;
     figure {
         height: 100%;
         width: auto;
@@ -19,7 +19,6 @@
 // ---------------------------------------
 
 main {
-    background-color: aqua; // TODO: ta bort, jätte ful
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -34,7 +33,6 @@ main {
         gap: 1rem;
         .product {
             flex-basis: calc(50vw - 3rem);
-            background-color: white; // TODO: ändra färger osv
             h3 {
                 font-size: clamp(1rem, 2.3vw, 4rem);
                 padding-left: 1rem;
@@ -61,16 +59,11 @@ main {
 .shopping_cart_page {
     order: 2;
     flex-basis: 48vw;
-    // align-self: flex-start;
-    // position: relative;
     .cart_products {
-        background-color: white;
-        border-radius: 3rem;
         position: sticky;
         top: 20vh;
-        padding: 1rem;
         button {
-            display: none; // TODO: sätt display: inline på desktop version
+            display: none;
         }
     }
 }

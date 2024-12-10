@@ -1,9 +1,17 @@
 // ---------------------------------------
+// ------------- <header> ----------------
+// ---------------------------------------
+
+.hero_section {
+    height: 90vh;
+}
+
+// ---------------------------------------
 // -------------- <main> -----------------
 // ---------------------------------------
 
 main {
-    background-color: rgb(153, 153, 153);
+    padding: 2rem;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     column-gap: 1rem;
@@ -32,9 +40,16 @@ main {
             display: inline;
         }
     }
+    .discount_code {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        input {
+            flex-basis: 100%;
+        }
+    }
 }
 
 .order_form_page {
-    grid-column: 3 / span 3;
+    grid-column: 3 / span 4;
     
 }
