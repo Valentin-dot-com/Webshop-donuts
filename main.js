@@ -2,6 +2,11 @@
 // ------------ Products section ---------------
 // ---------------------------------------------
 
+//----------- 15 min timer ------------------
+
+// 900 sekunder = 15 minuter
+setTimeout(clear_when_too_slow, 1000 * 900);
+
 //Array of products (donuts)
 const donut_products = [
 	{
@@ -542,6 +547,7 @@ function switch_payment_method(e) {
 
 	selected_payment_option = e.target.value;
 }
+
 // ---------------------------------------------
 // ------------ Form validation ----------------
 // ---------------------------------------------
@@ -723,19 +729,19 @@ function remove_error_msg(id) {
 const reset_form_btn = document.querySelector('#reset_btn');
 reset_form_btn.addEventListener('click', reset_form);
 
+const my_form = document.querySelector('#my_form');
+
 // Tar bort eventuella felmeddelanden som var synliga under inputs
 function reset_form() {
 	const all_error_msg = document.querySelectorAll('.error_msg');
-	console.log(all_error_msg);
 	all_error_msg.forEach((msg) => {
 		msg.classList.add('hidden');
 	});
 
-	// all_error_msg.classList.add('hidden');
-
 	donut_products.forEach((product) => {
 		product.amount = 0;
 	});
+	my_form.reset();
 	update_and_print_cart();
 }
 
@@ -774,4 +780,30 @@ function confirm_order_message(e) {
 		confirm_order_msg.innerHTML = `Tack för din beställning! Din order kommer att levereras om ${delivery_time_minutes} minuter.`;
 	}
 	confirm_order_msg.classList.remove('hidden');
+}
+
+// ---------------------------------------------
+// ------------ Timer reset 15 min ----------------
+// ---------------------------------------------
+
+const timeout_msg = document.querySelector('#too_slow_msg');
+
+const continue_shopping_btn = document.querySelector('#continue_shopping_btn');
+continue_shopping_btn.addEventListener('click', reload_page);
+
+function clear_when_too_slow() {
+	sort_products_section.classList.add('hidden');
+	product_page_section.classList.add('hidden');
+	shopping_cart_aside.classList.add('hidden');
+	order_form_section.classList.add('hidden');
+	timeout_msg.classList.remove('hidden');
+	reset_form();
+}
+
+function reload_page() {
+	// Jag tänkte först skriva som funktionen ovan fast tvärtom och bara visa allt igen
+	// Men en reload startar ju om timern igen så det kändes mer simpelt? Kanske inte var rätt
+	// Funktionen ovan rensar ju alla formulär m.m. så jag hade bara behövt starta om timern också
+
+	location.reload();
 }

@@ -55,7 +55,7 @@
 			<h2>Sortera efter:</h2>
 			<div class="sorting_btns">
 				<input id="sort_by_name" type="button" value="Namn">
-				<input id="sort_by_price_cheap" type="button" value="Pris: Billigsast överst">
+				<input id="sort_by_price_cheap" type="button" value="Pris: Billigast överst">
 				<input id="sort_by_price_expensive" type="button" value="Pris: Dyrast överst">
 				<input id="sort_by_category" type="button" value="Kategori">
 				<input id="sort_by_rating" type="button" value="Rating">
@@ -76,7 +76,7 @@
 		</aside>
 		<section id="order_form_section" class="order_form_page">
 			<h2>Din information:</h2>
-			<form>
+			<form id="my_form">
 				<!-- Användarinformation -->
 				<label class="user_input" id="first_name">
 					<span>Förnamn*</span>
@@ -180,6 +180,10 @@
 			</form>
 		</section>
 		<p id="confirm_order_msg" class="confirm_order_msg hidden"></p>
+		<div id="too_slow_msg" class="too_slow_msg hidden">
+			<p>Du var tyvärr för långsam, alla produkter har tagits bort från din varukorg</p>
+			<button id="continue_shopping_btn">Fortsätt handla</button>
+		</div>
 
 	</main>
 	<footer>
