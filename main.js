@@ -808,3 +808,14 @@ function reload_page() {
 
 	location.reload();
 }
+
+// ---------------------------------------------
+// --------- Dark/light mode-switch ------------
+// ---------------------------------------------
+
+const theme_switch_btn = document.querySelector('#switch_theme');
+theme_switch_btn.addEventListener('click', switch_theme);
+
+function switch_theme() {
+	document.body.classList.toggle('dark_mode');
+}

@@ -3,23 +3,48 @@
 // --------------------------------------------------------
 
 // primär och sekundär kan byta plats när de byter tema
+:root {
+    --primary_color: #faf1e9;
 
-$primary_color: #faf1e9;
+    --secondary_color: #2c2a33;
 
-$secondary_color: #2c2a33;
+    --accent_color: #ffb347;
 
-$accent_color: #ffb347;
+    --text_color: #2c2a33;
 
-// samma som sekundär
-$text_color: #2c2a33;
+    --highlight_color: #b0eacd;
+    
+    --form_bg_color: #fff;
+}
+// $primary_color: 
 
-// hade passat i mörkt tema!!
-$highlight_color: #b0eacd;
+// $secondary_color: #2c2a33;
 
-// Denna kan bli lite ljusare än secondary när den byts till mörkt tema (ljusbrun/grå)
-$form_bg_color: #fff
+// $accent_color: #ffb347;
+
+// // samma som sekundär
+// $text_color: #2c2a33;
+
+// // hade passat i mörkt tema!!
+// $highlight_color: #b0eacd;
+
+// // Denna kan bli lite ljusare än secondary när den byts till mörkt tema (ljusbrun/grå)
+// $form_bg_color: #fff; 
 
 // --------------------------------------------------------
 // --------------------- Mörkt tema -----------------------
 // --------------------------------------------------------
+.dark_mode {
+    --primary_color: #2c2a33;
 
+	--secondary_color: #faf1e9;
+
+	--accent_color: #ffb347;
+
+	--text_color: #2c2a33;
+
+	--highlight_color: #b0eacd;
+
+	// Denna kan bli lite ljusare än secondary när den byts till mörkt tema (ljusbrun/grå)
+	--form_bg_color: #49484e;
+}
