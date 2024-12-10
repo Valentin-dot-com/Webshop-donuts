@@ -19,6 +19,7 @@ body {
 	z-index: 5;
 	h1 {
 		color: var(--secondary_color);
+		font-size: clamp(1.5rem, 4vw, 3rem);
 	}
 	button {
 		height: 6vh;
