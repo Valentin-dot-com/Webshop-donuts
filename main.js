@@ -1,3 +1,6 @@
+// Ber om ursäkt för en enda lång fil hehe, hann inte riktigt ändra till moduler..
+
+
 // ---------------------------------------------
 // ------------ Products section ---------------
 // ---------------------------------------------
@@ -193,10 +196,8 @@ const weekend_prices = donut_products.map((product) => Math.round(product.price 
 let price_increase = 1;
 const bulk_purchase_discount = 0.9;
 
-// för att ha en slutlig totalsumma utanför funktionen, typ ifall den behöver kommas åt utanför själva "print-funktitonen"
 let final_order_sum = 0;
 
-// samma med denna som ovan, skulle kunna vara lokal variabel antar jag men sätter utanför pga samma som ovan
 let delivery_fee = 0;
 
 print_products_list();
@@ -248,7 +249,6 @@ function scroll_to_checkout() {
 
 // -------------------
 
-// TODO: kom på bättre namn kanske
 const nav_cart_sum = document.querySelector('#cart_cost_sum');
 
 function show_cart_sum_in_nav_menu() {
@@ -391,9 +391,9 @@ function sort_by_rating() {
 function increase_product_count(e) {
 	// vi tar bort increase och decrease här för att kunna hitta rätt id i arrayen (då den inte har increase eller decrease i sitt id i arrayen!)
 	const product_id = e.target.id.replace('increase_', '');
-	// spara id för knappen vi trycker på, för att kunna behålla fokus
+	
 	const clicked_button_id = e.target.id;
-	// leta rätt på produkten i arrayen som har id:t
+	
 	const found_product_index = donut_products.findIndex((product) => product.id === product_id);
 	if (found_product_index === -1) {
 		return;
@@ -411,9 +411,9 @@ function increase_product_count(e) {
 function decrease_product_count(e) {
 	// vi tar bort increase och decrease här för att kunna hitta rätt id i arrayen (då den inte har increase eller decrease i sitt id i arrayen!)
 	const product_id = e.target.id.replace('decrease_', '');
-	// spara id för knappen vi trycker på, för att kunna behålla fokus
+
 	const clicked_button_id = e.target.id;
-	// leta rätt på produkten i arrayen som har id:t
+
 	const found_product_index = donut_products.findIndex((product) => product.id === product_id);
 	if (found_product_index === -1) {
 		return;
@@ -435,8 +435,6 @@ function decrease_product_count(e) {
 // ---------------------------------------------
 
 const shopping_cart_products_overview = document.querySelector('#cart_products_added');
-
-// const go_to_checkout_btn = document.querySelector('#to_checkout_btn');
 
 function update_and_print_cart() {
 	// vi vill bara ha de produkter i vår array som har en amount som är större än 0
@@ -592,11 +590,11 @@ email_input.addEventListener('change', activate_order_button);
 
 // RegEx for these input^
 
-const name_regex = new RegExp(/^\d{3} ?\d{2}$/);
+const name_regex = new RegExp(/^[A-ZÅÄÖa-zåäö][a-zåäö'-]*( [A-ZÅÄÖa-zåäö][a-zåäö'-]*)*$/);
 
 const address_regex = new RegExp(/^[A-Za-zåäöÅÄÖéÉèÈÉëËüÜ\- ]+ \d{1,4}[A-Za-z]?$/);
 
-const postal_code_regex = new RegExp(/^\d{3} \d{2}$/);
+const postal_code_regex = new RegExp(/^\d{3} ?\d{2}$/);
 
 const city_regex = new RegExp(/^[A-Za-zåäöÅÄÖéÉèÈÉëËüÜ\-'\s]+$/);
 
@@ -609,9 +607,7 @@ const email_regex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 const social_security_number_input = document.querySelector('#social_security_number_input');
 social_security_number_input.addEventListener('change', activate_order_button);
 
-const social_security_number_regex = new RegExp(
-	/^20\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])-\d{4}$|^19\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])-\d{4}$/
-);
+const social_security_number_regex = new RegExp(/^20\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])-\d{4}$|^19\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])-\d{4}$/);
 
 function is_social_security_number_valid() {
 	return social_security_number_regex.exec(social_security_number_input.value);
@@ -631,7 +627,6 @@ month_input.addEventListener('change', activate_order_button);
 const cvc_input = document.querySelector('#cvc_input');
 cvc_input.addEventListener('change', activate_order_button);
 
-// TODO: fixa regEx på kort om du hinner, var inget krav!!
 // denna kollar så att fältet inte är tomt...
 const credit_card_fields_regex = new RegExp(/^.+$/);
 
