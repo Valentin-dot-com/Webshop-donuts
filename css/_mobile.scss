@@ -340,12 +340,22 @@ main {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
+			align-items: end;
 			.year_date_span {
 				flex-basis: 100%;
+				width: 100%;
 			}
-			.year_date_input {
+			.year_date_label {
 				flex-basis: 45%;
 				width: 100%;
+				.year_date_input {
+					width: 100%;
+				}
+			}
+			.slash_span {
+				flex-basis: 6%;
+				margin-bottom: 1rem;
+				text-align: center;
 			}
 		}
 		p {
