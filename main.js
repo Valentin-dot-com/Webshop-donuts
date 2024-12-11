@@ -592,7 +592,7 @@ email_input.addEventListener('change', activate_order_button);
 
 // RegEx for these input^
 
-const name_regex = new RegExp(/\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/);
+const name_regex = new RegExp(/^\d{3} ?\d{2}$/);
 
 const address_regex = new RegExp(/^[A-Za-zåäöÅÄÖéÉèÈÉëËüÜ\- ]+ \d{1,4}[A-Za-z]?$/);
 
