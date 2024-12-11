@@ -258,10 +258,12 @@ function show_cart_sum_in_nav_menu() {
 
 	nav_cart_sum.classList.add('cart_updated');
 
-	setTimeout(() => {
-		nav_cart_sum.classList.remove('cart_updated');
-		nav_cart_sum.computedStyleMap.backgroundColor = 'white';
-	}, 700);
+	setTimeout(back_to_normal, 700);
+}
+
+function back_to_normal() {
+	nav_cart_sum.classList.remove('cart_updated');
+	nav_cart_sum.computedStyleMap.backgroundColor = 'white';
 }
 
 // ---------------------------------------------
@@ -287,9 +289,7 @@ function print_products_list() {
 	donut_products.forEach((product) => {
 		product_list_div.innerHTML += `
 			<article class="product">
-				<img class="product_img" src="${product.img.url}" width="${product.img.width}" height="${
-			product.img.height
-		}" loading="lazy" alt="${product.img.alt}">
+				<img class="product_img" src="${product.img.url}" width="${product.img.width}" height="${product.img.height}" loading="lazy" alt="${product.img.alt}">
 				<h3>${product.name}</h3>
 				<p>${Math.round(product.price * price_increase)} kr</p>
 				<p>Kategori: ${product.category}
@@ -401,9 +401,9 @@ function increase_product_count(e) {
 	donut_products[found_product_index].amount += 1;
 	print_products_list();
 	update_and_print_cart();
+
 	// för att behålla fokus på knappen
 	document.querySelector(`#${clicked_button_id}`).focus();
-	// TODO: Koppla så att när denna klickas i så ska visuell feedback ges att varukorgen uppdaterats
 }
 
 //---------------------------------------------------------------------------------
@@ -425,9 +425,9 @@ function decrease_product_count(e) {
 	donut_products[found_product_index].amount -= 1;
 	print_products_list();
 	update_and_print_cart();
+
 	// för att behålla fokus på knappen
 	document.querySelector(`#${clicked_button_id}`).focus();
-	// TODO: Koppla så att när denna klickas i så ska visuell feedback ges att varukorgen uppdaterats
 }
 
 // ---------------------------------------------
