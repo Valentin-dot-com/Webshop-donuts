@@ -27,8 +27,9 @@ In this section I will include a few screenshots to demonstrate the end result.
 ![Landing page for desktop in light mode](/screenshots/landing_page.jpg)
 This is the landing page of the webshop for desktop users.
 
-![Landing page for mobile devices in light mode](/screenshots/mobile1_light.png)
-![Landing page for mobile devices in dark mode](/screenshots/mobile1_dark.png)
+| ![Landing page for mobile devices in light mode](/screenshots/mobile1_light.png) | ![Landing page for mobile devices in dark mode](/screenshots/mobile1_dark.png) |
+|-----------------------|-----------------------|
+
 These 2 screenshots show the landing page on mobile devices in both light mode and dark mode.
 
 ![Product overview for desktop in light mode](/screenshots/product_overview1_light.jpg)
