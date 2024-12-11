@@ -171,8 +171,6 @@ const icon_half_star = {
 	},
 };
 
-const today = new Date();
-
 const product_list_div = document.querySelector('#products_list');
 
 const sort_by_name_btn = document.querySelector('#sort_by_name');
@@ -191,11 +189,6 @@ const sort_by_rating_btn = document.querySelector('#sort_by_rating');
 sort_by_rating_btn.addEventListener('click', sort_by_rating);
 
 const weekend_prices = donut_products.map((product) => Math.round(product.price * 1.15));
-
-const is_friday = today.getDay() === 5;
-const is_saturday = today.getDay() === 6;
-const is_sunday = today.getDay() === 0;
-const is_monday = today.getDay() === 1;
 
 let price_increase = 1;
 const bulk_purchase_discount = 0.9;
@@ -278,6 +271,12 @@ function show_cart_sum_in_nav_menu() {
 function print_products_list() {
 	//rensa diven på produkter innan utskrift av uppdaterad information
 	product_list_div.innerHTML = '';
+
+	const today = new Date();
+	const is_friday = today.getDay() === 5;
+	const is_saturday = today.getDay() === 6;
+	const is_sunday = today.getDay() === 0;
+	const is_monday = today.getDay() === 1;
 
 	// om det är fredag efter 15 till måndag 03:00 så uppdateras price_increase
 	if ((is_friday && today.getHours() >= 15) || is_saturday || is_sunday || (is_monday && today.getHours() <= 3)) {
@@ -483,6 +482,8 @@ function update_and_print_cart() {
 		</div>`;
 	});
 	final_order_sum = total_sum;
+
+	const today = new Date();
 
 	// Om det är måndag morgon, rabatt (gäller måndag kl 03.00-10.00, för att inte krocka med helgpåslaget mellan 00.00-03.00)
 	if (today.getDay() === 1 && today.getHours() < 10 && today.getHours > 3) {
@@ -777,6 +778,11 @@ function confirm_order_message(e) {
 	product_page_section.classList.add('hidden');
 	shopping_cart_aside.classList.add('hidden');
 	order_form_section.classList.add('hidden');
+
+	const today = new Date();
+	const is_friday = today.getDay() === 5;
+	const is_saturday = today.getDay() === 6;
+	const is_sunday = today.getDay() === 0;
 
 	if (today.getHours >= 0 && today.getHours < 5) {
 		delivery_time_minutes = 45;
