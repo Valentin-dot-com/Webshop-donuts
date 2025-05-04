@@ -48,3 +48,4 @@ This screenshot showcase an lighthouse analysis (executed in Google Chrome).
 
 #### Link to live website:
 https://medieinstitutet.github.io/fed24d-js-intro-inl-1-webshop-Valentin-dot-com/ 
+https://valentin-dot-com.github.io/Webshop-donuts/
